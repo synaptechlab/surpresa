@@ -1,99 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Uma surpresa para você</title>
+    <title>Uma surpresa para você 💚</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="container">
+    <main>
 
-        <!-- CABEÇALHO -->
-
+        <!-- HERO -->
         <section class="hero">
+            <div class="hero-content">
 
-            <p class="eyebrow">UMA PEQUENA SURPRESA</p>
+                <span class="eyebrow">UMA PEQUENA SURPRESA</span>
 
-            <h1>Você vai precisar esperar...</h1>
+                <h1>
+                    Algumas coisas<br>
+                    levam tempo para<br>
+                    serem descobertas.
+                </h1>
 
-            <p class="description">
-                Durante algumas semanas, uma pequena surpresa vai sendo revelada.
-                Mas já que você está aqui, achei justo deixar algumas pistas pelo caminho.
-            </p>
-
-            <div class="countdown-box">
-
-                <span class="countdown-label">PRÓXIMA REVELAÇÃO</span>
-
-                <p id="countdown">
-                    Calculando...
+                <p class="hero-text">
+                    Durante algumas semanas, uma nova parte dessa surpresa
+                    vai aparecer por aqui.
                 </p>
 
-            </div>
+                <div class="countdown-container">
+                    <span class="countdown-label">PRÓXIMA REVELAÇÃO</span>
 
+                    <div id="countdown" class="countdown">
+                        <div>
+                            <strong id="days">00</strong>
+                            <span>dias</span>
+                        </div>
+
+                        <div>
+                            <strong id="hours">00</strong>
+                            <span>horas</span>
+                        </div>
+
+                        <div>
+                            <strong id="minutes">00</strong>
+                            <span>minutos</span>
+                        </div>
+
+                        <div>
+                            <strong id="seconds">00</strong>
+                            <span>segundos</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
 
         <!-- GALERIA -->
-
         <section class="gallery-section">
 
             <div class="section-heading">
+                <span class="eyebrow">A SURPRESA</span>
 
-                <div>
-                    <span class="section-number">01</span>
-
-                    <h2>As pistas</h2>
-                </div>
+                <h2>
+                    Uma parte de cada vez.
+                </h2>
 
                 <p>
-                    Uma nova foto aparece a cada semana.
+                    A cada semana, uma nova imagem será desbloqueada.
+                    As próximas ainda estão esperando a hora certa.
                 </p>
-
             </div>
 
-
-            <div id="gallery" class="gallery">
-                <!-- Os cards serão criados pelo JavaScript -->
-            </div>
+            <div id="gallery" class="gallery"></div>
 
         </section>
 
 
-        <!-- INFORMAÇÕES SOBRE MIM -->
-
+        <!-- SOBRE MIM -->
         <section class="about-section">
 
-            <div class="section-heading">
+            <div class="about-card">
 
-                <div>
-                    <span class="section-number">02</span>
+                <span class="eyebrow">ENQUANTO ISSO...</span>
 
-                    <h2>Enquanto isso...</h2>
-                </div>
+                <h2 id="weeklyTitle">
+                    Uma coisa sobre mim
+                </h2>
 
-                <p>
-                    Você também pode descobrir algumas coisas sobre mim.
+                <p id="weeklyFact">
+                    A cada semana, além da surpresa, você vai descobrir
+                    um pouquinho mais sobre mim.
                 </p>
 
-            </div>
-
-
-            <div id="weekly-fact" class="fact-card">
-
-                <span class="fact-label">
-                    UMA COISA SOBRE MIM
+                <span id="weeklyNumber" class="weekly-number">
+                    SEMANA 01
                 </span>
-
-                <p id="fact-text">
-                    Carregando...
-                </p>
 
             </div>
 
@@ -101,54 +111,39 @@
 
 
         <!-- REVELAÇÃO FINAL -->
+        <section class="final-section">
 
-        <section id="final-section" class="final-section">
+            <div class="final-card">
 
-            <div class="final-content">
+                <span class="eyebrow">13 DE DEZEMBRO</span>
 
-                <span class="final-icon">✦</span>
+                <h2>
+                    Chegou a hora.
+                </h2>
 
-                <p class="eyebrow">
-                    13 DE DEZEMBRO
+                <p id="finalText">
+                    A última parte dessa surpresa ainda está esperando
+                    o momento certo.
                 </p>
 
-                <h2>Chegou o dia.</h2>
-
-                <p>
-                    Você teve paciência até aqui.
-                    Agora falta só uma última coisa.
-                </p>
-
-                <button id="reveal-button">
-                    Revelar surpresa
+                <button id="revealButton" class="reveal-button" disabled>
+                    Ainda não...
                 </button>
-
-                <div id="final-message" class="final-message">
-
-                    <p>
-                        ❤️
-                    </p>
-
-                    <span>
-                        A surpresa está esperando por você.
-                    </span>
-
-                </div>
 
             </div>
 
         </section>
 
-
-        <footer>
-            Feito especialmente para você.
-        </footer>
-
     </main>
+
+
+    <footer>
+        Feito com carinho, um pouco de planejamento e provavelmente
+        mais tempo do que deveria. 💚
+    </footer>
 
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
