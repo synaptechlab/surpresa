@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Uma surpresa para você ❤️</title>
+    <title>Uma surpresa para você</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,34 +14,22 @@
 
     <main class="container">
 
-        <div class="content">
+        <!-- CABEÇALHO -->
 
-            <p class="eyebrow">UMA SURPRESA ESTÁ SENDO REVELADA</p>
+        <section class="hero">
+
+            <p class="eyebrow">UMA PEQUENA SURPRESA</p>
 
             <h1>Você vai precisar esperar...</h1>
 
             <p class="description">
-                A cada semana, um pouco mais da surpresa será revelado.
+                Durante algumas semanas, uma pequena surpresa vai sendo revelada.
+                Mas já que você está aqui, achei justo deixar algumas pistas pelo caminho.
             </p>
 
-            <div class="image-container">
-                <img
-                    id="surprise-image"
-                    src="https://picsum.photos/800/800"
-                    alt="Sua surpresa"
-                    draggable="false"
-                >
+            <div class="countdown-box">
 
-                <div id="image-overlay"></div>
-            </div>
-
-            <div class="week-info">
-
-                <span id="week-label">SEMANA 1 DE 12</span>
-
-                <div class="progress-container">
-                    <div id="progress-bar"></div>
-                </div>
+                <span class="countdown-label">PRÓXIMA REVELAÇÃO</span>
 
                 <p id="countdown">
                     Calculando...
@@ -48,15 +37,118 @@
 
             </div>
 
-            <p class="message">
-                Algumas coisas ficam melhores quando esperamos por elas. ❤️
-            </p>
+        </section>
 
-        </div>
+
+        <!-- GALERIA -->
+
+        <section class="gallery-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-number">01</span>
+
+                    <h2>As pistas</h2>
+                </div>
+
+                <p>
+                    Uma nova foto aparece a cada semana.
+                </p>
+
+            </div>
+
+
+            <div id="gallery" class="gallery">
+                <!-- Os cards serão criados pelo JavaScript -->
+            </div>
+
+        </section>
+
+
+        <!-- INFORMAÇÕES SOBRE MIM -->
+
+        <section class="about-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-number">02</span>
+
+                    <h2>Enquanto isso...</h2>
+                </div>
+
+                <p>
+                    Você também pode descobrir algumas coisas sobre mim.
+                </p>
+
+            </div>
+
+
+            <div id="weekly-fact" class="fact-card">
+
+                <span class="fact-label">
+                    UMA COISA SOBRE MIM
+                </span>
+
+                <p id="fact-text">
+                    Carregando...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REVELAÇÃO FINAL -->
+
+        <section id="final-section" class="final-section">
+
+            <div class="final-content">
+
+                <span class="final-icon">✦</span>
+
+                <p class="eyebrow">
+                    13 DE DEZEMBRO
+                </p>
+
+                <h2>Chegou o dia.</h2>
+
+                <p>
+                    Você teve paciência até aqui.
+                    Agora falta só uma última coisa.
+                </p>
+
+                <button id="reveal-button">
+                    Revelar surpresa
+                </button>
+
+                <div id="final-message" class="final-message">
+
+                    <p>
+                        ❤️
+                    </p>
+
+                    <span>
+                        A surpresa está esperando por você.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            Feito especialmente para você.
+        </footer>
 
     </main>
+
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
