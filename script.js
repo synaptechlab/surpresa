@@ -9,6 +9,7 @@ const weeks = [
         image: "imagens/foto-01.png",
         phrase: "E então? Algum palpite? kkkkk",
         fact: "Uma coisa que você provavelmente vai perceber sobre mim: eu gosto bastante de música kkkkk"
+        lockedPhrase: "Ainda tem tempo..."
     },
 
     {
@@ -17,6 +18,7 @@ const weeks = [
         image: "imagens/foto-02.png",
         phrase: "Ainda está difícil descobrir? 👀",
         fact: "Eu gosto muito de aprender coisas novas, principalmente quando posso descobrir sozinho como elas funcionam."
+        lockedPhrase: "Ainda não..."
     },
 
     {
@@ -25,6 +27,7 @@ const weeks = [
         image: "imagens/foto-03.png",
         phrase: "Talvez agora tenha ficado um pouquinho mais fácil...",
         fact: "Uma coisa meio minha é que, quando alguma coisa dá problema, eu gosto de tentar descobrir o que aconteceu antes de simplesmente deixar pra lá quase paranoico dependendo da situação, gosto de compreender"
+        lockedPhrase: "Passem logo semanas 😭"
     },
 
     {
@@ -33,6 +36,7 @@ const weeks = [
         image: "imagens/foto-04.png",
         phrase: "Está começando a fazer sentido? kkkkk",
         fact: "Eu gosto de tirar e editar fotos, geralmente da natureza (às vezes fico horas editando fotos kkkkk)"
+        lockedPhrase: "Ainda tem 7 semanas..."
     },
 
     {
@@ -41,6 +45,7 @@ const weeks = [
         image: "imagens/foto-05.png",
         phrase: "Agora dá pra saber o que é kkkkk",
         fact: "Muitas coisas que eu sei fazer hoje eu aprendi simplesmente procurando ou fuçando até conseguir"
+        lockedPhrase: "Ficou interessante"
     },
 
     {
@@ -49,6 +54,7 @@ const weeks = [
         image: "imagens/foto-06.png",
         phrase: "Acho que já ficou impossível não ter uma ideia 👀",
         fact: "Eu gosto de criar coisas do zero, mesmo quando no começo eu ainda não faço ideia de como fazer"
+        lockedPhrase: "A ansiedade deve estar sufocante"
     },
 
     {
@@ -57,6 +63,7 @@ const weeks = [
         image: "imagens/foto-07.png",
         phrase: "Estamos chegando perto...",
         fact: "Eu gosto quando consigo aprender alguma coisa que antes parecia complicada"
+        lockedPhrase: "4 semanas"
     },
 
     {
@@ -65,6 +72,7 @@ const weeks = [
         image: "imagens/foto-08.png",
         phrase: "Pelo menos finge que ainda não descobriu kkkkkk",
         fact: "Eu rio de tudo kkkkk, quando estou nervoso, feliz, às vezes até em péssimos momentos até mesmo por mensagens kkkk deu pra perceber eu acho, espero que isso não seja incômodo kkkkk"
+        lockedPhrase: "Quase lá"
     },
 
     {
@@ -73,6 +81,7 @@ const weeks = [
         image: "imagens/foto-09.png",
         phrase: "Agora falta pouco...",
         fact: "Além do curso de inglês, eu já participei de um projeto de iniciação científica e fui medalhista de olimpiadas do estado de São Paulo 3x (não é muita coisa), pode não ser muita coisa, mas são conquistas que fico bem feliz de ter feito parte e gostaria de compartilhar kkkkk"
+        lockedPhrase: "Tá perto!"
     },
 
     {
@@ -81,6 +90,7 @@ const weeks = [
         image: "imagens/foto-10.png",
         phrase: "Agora com certeza deu pra perceber 😊",
         fact: "Essa surpresa começou como uma ideia e acabou ficando muito maior do que eu imaginava kkkkkk"
+        lockedPhrase: "Só mais 1 semana!"
     },
 
     {
@@ -89,6 +99,7 @@ const weeks = [
         image: "imagens/foto-11.png",
         phrase: "Última antes do GRANDE dia!",
         fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!"
+        lockedPhrase: "A espera acabou!"
     }
 ];
 
@@ -201,7 +212,7 @@ function createGallery() {
                     </span>
 
                     <h3>
-                        Aguenta aí kkkkk
+                        ${week.lockedPhrase}
                     </h3>
 
                 </div>
