@@ -90,7 +90,7 @@ const weeks = [
         image: "imagens/foto-10.png",
         phrase: "Agora com certeza deu pra perceber 😊",
         fact: "Essa surpresa começou como uma ideia e acabou ficando muito maior do que eu imaginava kkkkkk"
-        lockedPhrase: "Só mais 1 semana!"
+        lockedPhrase: "Só mais 2 semana!"
     },
 
     {
@@ -99,7 +99,7 @@ const weeks = [
         image: "imagens/foto-11.png",
         phrase: "Última antes do GRANDE dia!",
         fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!"
-        lockedPhrase: "A espera acabou!"
+        lockedPhrase: "Última semana!!!!"
     }
 ];
 
