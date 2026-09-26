@@ -1,236 +1,162 @@
-/*
-==================================================
-CONFIGURAÇÃO
-==================================================
-*/
-
-const START_DATE = new Date("2026-09-27T00:00:00-03:00");
-
-const FINAL_DATE = new Date("2026-12-13T00:00:00-03:00");
-
-const TOTAL_WEEKS = 11;
-
-
-/*
-==================================================
-DADOS DAS SEMANAS
-==================================================
-*/
+// ==========================================
+// CONFIGURAÇÃO DAS SEMANAS
+// ==========================================
 
 const weeks = [
-
     {
         number: 1,
         date: "2026-09-27T00:00:00-03:00",
-        blur: 100,
-        image: "imagens/foto-01.jpg",
+        image: "imagens/foto-01.png",
         phrase: "E então? Algum palpite? kkkkk",
-        fact: "Eu tenho uma facilidade absurda para ficar horas ouvindo música."
+        fact: "Eu gosto bastante de música e provavelmente consigo passar horas ouvindo uma playlist."
     },
 
     {
         number: 2,
         date: "2026-10-04T00:00:00-03:00",
-        blur: 97,
-        image: "imagens/foto-02.jpg",
-        phrase: "Ainda está difícil descobrir, eu sei kkkkk",
-        fact: "Eu sou bem eclético com música. Se eu gostar, entrou na playlist."
+        image: "imagens/foto-02.png",
+        phrase: "Ainda está difícil descobrir? 👀",
+        fact: "Tecnologia é uma das coisas que mais despertam minha curiosidade."
     },
 
     {
         number: 3,
         date: "2026-10-11T00:00:00-03:00",
-        blur: 93,
-        image: "imagens/foto-03.jpg",
+        image: "imagens/foto-03.png",
         phrase: "Talvez agora tenha ficado um pouquinho mais fácil...",
-        fact: "Eu gosto bastante de tecnologia e sempre acabo inventando algum projeto."
+        fact: "Eu gosto de aprender coisas novas, principalmente quando posso colocar a mão na massa."
     },
 
     {
         number: 4,
         date: "2026-10-18T00:00:00-03:00",
-        blur: 87,
-        image: "imagens/foto-04.jpg",
-        phrase: "Já conseguiu imaginar o que é?",
-        fact: "Eu gosto de aprender coisas novas, mesmo quando começo sem saber absolutamente nada."
+        image: "imagens/foto-04.png",
+        phrase: "Está começando a fazer sentido? kkkkk",
+        fact: "Às vezes eu começo uma coisa simples e, quando percebo, já estou tentando melhorar todos os detalhes."
     },
 
     {
         number: 5,
         date: "2026-10-25T00:00:00-03:00",
-        blur: 78,
-        image: "imagens/foto-05.jpg",
+        image: "imagens/foto-05.png",
         phrase: "Agora dá pra saber o que é kkkkk",
-        fact: "Às vezes eu começo um projeto só por curiosidade e, quando percebo, estou completamente envolvido."
+        fact: "Eu gosto bastante de coisas criativas, principalmente quando posso transformar uma ideia em alguma coisa de verdade."
     },
 
     {
         number: 6,
         date: "2026-11-01T00:00:00-03:00",
-        blur: 67,
-        image: "imagens/foto-06.jpg",
-        phrase: "Tá começando a entregar demais...",
-        fact: "Eu reparo muito nos pequenos detalhes das coisas."
+        image: "imagens/foto-06.png",
+        phrase: "Já dá pra perceber bastante coisa agora 👀",
+        fact: "Eu tenho uma tendência meio inconveniente de querer entender como as coisas funcionam."
     },
 
     {
         number: 7,
         date: "2026-11-08T00:00:00-03:00",
-        blur: 55,
-        image: "imagens/foto-07.jpg",
-        phrase: "Se ainda não descobriu, eu não sei mais o que fazer 😭",
-        fact: "Eu gosto de guardar momentos que foram importantes para mim."
+        image: "imagens/foto-07.png",
+        phrase: "Estamos chegando perto...",
+        fact: "Eu valorizo bastante os pequenos detalhes, principalmente aqueles que mostram que alguém realmente prestou atenção."
     },
 
     {
         number: 8,
         date: "2026-11-15T00:00:00-03:00",
-        blur: 42,
-        image: "imagens/foto-08.jpg",
-        phrase: "Tá chegando...",
-        fact: "Eu posso parecer tranquilo, mas às vezes fico planejando tudo nos mínimos detalhes."
+        image: "imagens/foto-08.png",
+        phrase: "Acho que já ficou impossível não ter uma ideia 👀",
+        fact: "Eu gosto quando as coisas têm significado, mesmo quando parecem simples por fora."
     },
 
     {
         number: 9,
         date: "2026-11-22T00:00:00-03:00",
-        blur: 28,
-        image: "imagens/foto-09.jpg",
-        phrase: "Agora ficou praticamente impossível esconder.",
-        fact: "Eu gosto quando consigo fazer alguma coisa pensando especialmente em alguém."
+        image: "imagens/foto-09.png",
+        phrase: "Agora falta pouco...",
+        fact: "Tem coisas que eu prefiro demonstrar através de atitudes do que simplesmente falar."
     },
 
     {
         number: 10,
         date: "2026-11-29T00:00:00-03:00",
-        blur: 12,
-        image: "imagens/foto-10.jpg",
-        phrase: "Só mais um pouquinho...",
-        fact: "Se você chegou até aqui, provavelmente já percebeu que eu planejei isso por um motivo."
+        image: "imagens/foto-10.png",
+        phrase: "Você já deve ter descoberto o segredo 😅",
+        fact: "Essa surpresa começou como uma ideia e acabou ficando muito maior do que eu imaginava."
     },
 
     {
         number: 11,
         date: "2026-12-06T00:00:00-03:00",
-        blur: 0,
-        image: "imagens/foto-11.jpg",
-        phrase: "Pronto. Agora você já sabe.",
-        fact: "E essa foi só a primeira parte da surpresa."
+        image: "imagens/foto-11.png",
+        phrase: "Última antes do grande dia.",
+        fact: "Se você chegou até aqui, já descobriu bastante coisa. Mas ainda falta uma última parte."
     }
-
 ];
 
 
-/*
-==================================================
-ELEMENTOS
-==================================================
-*/
+// ==========================================
+// DATA DA REVELAÇÃO FINAL
+// ==========================================
+
+const finalRevealDate = new Date("2026-12-13T00:00:00-03:00");
+
+
+// ==========================================
+// ELEMENTOS DA PÁGINA
+// ==========================================
 
 const gallery = document.getElementById("gallery");
 
-const countdown = document.getElementById("countdown");
+const daysElement = document.getElementById("days");
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
 
-const weeklyFact = document.getElementById("weekly-fact");
+const weeklyTitle = document.getElementById("weeklyTitle");
+const weeklyFact = document.getElementById("weeklyFact");
+const weeklyNumber = document.getElementById("weeklyNumber");
 
-const factText = document.getElementById("fact-text");
-
-const finalSection = document.getElementById("final-section");
-
-const revealButton = document.getElementById("reveal-button");
-
-const finalMessage = document.getElementById("final-message");
-
-
-/*
-==================================================
-DATA ATUAL
-==================================================
-*/
-
-function getNow() {
-
-    return new Date();
-
-}
+const finalText = document.getElementById("finalText");
+const revealButton = document.getElementById("revealButton");
 
 
-/*
-==================================================
-SEMANA ATUAL
-==================================================
-*/
+// ==========================================
+// DESCOBRE QUAL SEMANA ESTÁ LIBERADA
+// ==========================================
 
 function getCurrentWeek() {
-
-    const now = getNow();
+    const now = new Date();
 
     let currentWeek = 0;
 
-    for (const week of weeks) {
+    weeks.forEach((week) => {
+        const weekDate = new Date(week.date);
 
-        const unlockDate = new Date(week.date);
-
-        if (now >= unlockDate) {
-
+        if (now >= weekDate) {
             currentWeek = week.number;
-
         }
-
-    }
+    });
 
     return currentWeek;
-
 }
 
 
-/*
-==================================================
-FORMATAR DATA
-==================================================
-*/
+// ==========================================
+// FORMATA DATA
+// ==========================================
 
 function formatDate(dateString) {
-
     const date = new Date(dateString);
 
     return date.toLocaleDateString("pt-BR", {
-
         day: "2-digit",
-
         month: "2-digit"
-
     });
-
 }
 
 
-/*
-==================================================
-CONVERTER BLUR
-==================================================
-
-CSS utiliza pixels para blur.
-Aqui transformamos a porcentagem
-em um valor visual adequado.
-
-==================================================
-*/
-
-function getBlurPixels(percentage) {
-
-    const maxBlur = 30;
-
-    return (percentage / 100) * maxBlur;
-
-}
-
-
-/*
-==================================================
-CRIAR GALERIA
-==================================================
-*/
+// ==========================================
+// CRIA A GALERIA
+// ==========================================
 
 function createGallery() {
 
@@ -238,120 +164,95 @@ function createGallery() {
 
     gallery.innerHTML = "";
 
-    weeks.forEach(week => {
+    weeks.forEach((week) => {
+
+        const isUnlocked = week.number <= currentWeek;
 
         const card = document.createElement("article");
 
-        card.className = "photo-card";
+        card.className = isUnlocked
+            ? "gallery-card unlocked"
+            : "gallery-card locked";
 
-        const unlocked = currentWeek >= week.number;
 
+        // ==================================
+        // CARD BLOQUEADO
+        // ==================================
 
-        /*
-        ------------------------------------------
-        FOTO DESBLOQUEADA
-        ------------------------------------------
-        */
-
-        if (unlocked) {
-
-            card.classList.add("unlocked");
+        if (!isUnlocked) {
 
             card.innerHTML = `
+                <div class="locked-image">
 
-                <div class="photo-wrapper">
+                    <div class="question-mark">
+                        ?
+                    </div>
 
-                    <img
-                        src="${week.image}"
-                        alt="Foto da semana ${week.number}"
-                        style="filter: blur(${getBlurPixels(week.blur)}px);"
-                        draggable="false"
-                    >
-
-                    <div class="week-badge">
+                    <span class="week-label">
                         SEMANA ${String(week.number).padStart(2, "0")}
-                    </div>
-
-                    <div class="blur-badge">
-                        ${week.blur}% de blur
-                    </div>
-
-                </div>
-
-                <div class="card-content">
-
-                    <p class="photo-phrase">
-                        ${week.phrase}
-                    </p>
-
-                    <span class="card-date">
-                        Revelada em ${formatDate(week.date)}
                     </span>
 
                 </div>
 
+                <div class="card-info">
+
+                    <span class="card-date">
+                        Disponível em ${formatDate(week.date)}
+                    </span>
+
+                    <h3>
+                        Ainda não...
+                    </h3>
+
+                </div>
             `;
 
         }
 
 
-        /*
-        ------------------------------------------
-        FOTO BLOQUEADA
-        ------------------------------------------
-        */
+        // ==================================
+        // CARD DESBLOQUEADO
+        // ==================================
 
         else {
 
-            card.classList.add("locked");
-
             card.innerHTML = `
+                <div class="image-wrapper">
 
-                <div class="locked-photo">
+                    <img
+                        src="${week.image}"
+                        alt="Imagem da semana ${week.number}"
+                        draggable="false"
+                    >
 
-                    <span class="question-mark">
-                        ?
+                    <span class="week-label">
+                        SEMANA ${String(week.number).padStart(2, "0")}
                     </span>
 
-                    <div class="lock-text">
-
-                        <strong>
-                            SEMANA ${String(week.number).padStart(2, "0")}
-                        </strong>
-
-                        <span>
-                            Disponível em ${formatDate(week.date)}
-                        </span>
-
-                    </div>
-
                 </div>
 
-                <div class="card-content">
+                <div class="card-info">
 
-                    <p class="locked-message">
-                        Essa pista ainda está escondida.
-                    </p>
+                    <span class="card-date">
+                        ${formatDate(week.date)}
+                    </span>
+
+                    <h3>
+                        ${week.phrase}
+                    </h3>
 
                 </div>
-
             `;
-
         }
 
-
         gallery.appendChild(card);
-
     });
-
 }
 
 
-/*
-==================================================
-ATUALIZAR CURIOSIDADE
-==================================================
-*/
+// ==========================================
+// ATUALIZA A FRASE SOBRE MIM
+// ==========================================
 
 function updateWeeklyFact() {
 
@@ -359,231 +260,193 @@ function updateWeeklyFact() {
 
     if (currentWeek === 0) {
 
-        factText.textContent =
-            "Antes da primeira revelação, fica só uma coisa sobre mim...";
+        weeklyNumber.textContent = "EM BREVE";
+
+        weeklyTitle.textContent = "Uma coisa sobre mim";
+
+        weeklyFact.textContent =
+            "A cada semana, você vai descobrir um pouquinho mais sobre mim.";
 
         return;
-
     }
 
+    const currentData = weeks[currentWeek - 1];
 
-    const week = weeks[currentWeek - 1];
+    weeklyNumber.textContent =
+        `SEMANA ${String(currentWeek).padStart(2, "0")}`;
 
-    if (!week) return;
+    weeklyTitle.textContent =
+        "Uma coisa sobre mim";
 
-    factText.textContent = week.fact;
-
+    weeklyFact.textContent =
+        currentData.fact;
 }
 
 
-/*
-==================================================
-CONTAGEM REGRESSIVA
-==================================================
-*/
+// ==========================================
+// ATUALIZA CONTAGEM REGRESSIVA
+// ==========================================
 
 function updateCountdown() {
 
-    const now = getNow();
+    const now = new Date();
 
-    const currentWeek = getCurrentWeek();
+    let nextDate = null;
 
 
-    /*
-    ------------------------------------------
-    ANTES DA PRIMEIRA SEMANA
-    ------------------------------------------
-    */
+    // Procura a próxima semana ainda bloqueada
+    for (const week of weeks) {
 
-    if (currentWeek === 0) {
+        const weekDate = new Date(week.date);
 
-        const firstDate = new Date(weeks[0].date);
+        if (now < weekDate) {
 
-        updateTimer(firstDate, "A primeira revelação começa em");
+            nextDate = weekDate;
 
-        return;
-
+            break;
+        }
     }
 
 
-    /*
-    ------------------------------------------
-    ENTRE AS SEMANAS
-    ------------------------------------------
-    */
+    // Se todas as imagens já foram liberadas,
+    // conta até a revelação final.
 
-    if (currentWeek < TOTAL_WEEKS) {
-
-        const nextWeek = weeks[currentWeek];
-
-        const nextDate = new Date(nextWeek.date);
-
-        updateTimer(nextDate, "Próxima revelação em");
-
-        return;
-
+    if (!nextDate) {
+        nextDate = finalRevealDate;
     }
 
 
-    /*
-    ------------------------------------------
-    TODAS AS FOTOS REVELADAS
-    ------------------------------------------
-    */
+    const difference = nextDate - now;
 
-    if (now < FINAL_DATE) {
 
-        updateTimer(
-            FINAL_DATE,
-            "A revelação final acontece em"
-        );
+    if (difference <= 0) {
+
+        daysElement.textContent = "00";
+        hoursElement.textContent = "00";
+        minutesElement.textContent = "00";
+        secondsElement.textContent = "00";
+
+        createGallery();
+        updateWeeklyFact();
 
         return;
-
-    }
-
-
-    /*
-    ------------------------------------------
-    DIA FINAL
-    ------------------------------------------
-    */
-
-    countdown.textContent =
-        "A surpresa finalmente chegou. ❤️";
-
-}
-
-
-/*
-==================================================
-ATUALIZAR TIMER
-==================================================
-*/
-
-function updateTimer(targetDate, prefix) {
-
-    const now = getNow();
-
-    let remaining = targetDate.getTime() - now.getTime();
-
-    if (remaining < 0) {
-
-        remaining = 0;
-
     }
 
 
     const days = Math.floor(
-        remaining / (1000 * 60 * 60 * 24)
+        difference / (1000 * 60 * 60 * 24)
     );
 
     const hours = Math.floor(
-        (remaining / (1000 * 60 * 60)) % 24
+        (difference / (1000 * 60 * 60)) % 24
     );
 
     const minutes = Math.floor(
-        (remaining / (1000 * 60)) % 60
+        (difference / (1000 * 60)) % 60
     );
 
     const seconds = Math.floor(
-        (remaining / 1000) % 60
+        (difference / 1000) % 60
     );
 
 
-    countdown.textContent =
-        `${prefix} ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    daysElement.textContent =
+        String(days).padStart(2, "0");
 
+    hoursElement.textContent =
+        String(hours).padStart(2, "0");
+
+    minutesElement.textContent =
+        String(minutes).padStart(2, "0");
+
+    secondsElement.textContent =
+        String(seconds).padStart(2, "0");
 }
 
 
-/*
-==================================================
-SEÇÃO FINAL
-==================================================
-*/
+// ==========================================
+// REVELAÇÃO FINAL
+// ==========================================
 
-function updateFinalSection() {
+function updateFinalReveal() {
 
-    const now = getNow();
+    const now = new Date();
 
-    if (now >= FINAL_DATE) {
+    if (now >= finalRevealDate) {
 
-        finalSection.classList.add("available");
+        revealButton.disabled = false;
 
-        return;
+        revealButton.textContent =
+            "Revelar surpresa";
 
+        finalText.textContent =
+            "Depois de tantas semanas, finalmente chegou o momento.";
+
+    } else {
+
+        revealButton.disabled = true;
+
+        revealButton.textContent =
+            "Ainda não...";
+
+        finalText.textContent =
+            "A última parte dessa surpresa ainda está esperando o momento certo.";
     }
-
-    finalSection.classList.remove("available");
-
 }
 
 
-/*
-==================================================
-BOTÃO DA REVELAÇÃO
-==================================================
-*/
+// ==========================================
+// BOTÃO DA REVELAÇÃO
+// ==========================================
 
 revealButton.addEventListener("click", () => {
 
-    finalMessage.classList.add("show");
+    const now = new Date();
 
-    revealButton.textContent =
-        "Agora você sabe ❤️";
+    if (now < finalRevealDate) {
+        return;
+    }
 
+    finalText.innerHTML = `
+        <strong>
+            Finalmente. 💚
+        </strong>
+        <br><br>
+        Espero que essa pequena surpresa tenha valido a espera.
+    `;
+
+    revealButton.style.display = "none";
 });
 
 
-/*
-==================================================
-PROTEÇÃO DAS IMAGENS
-==================================================
-*/
+// ==========================================
+// PROTEÇÃO SIMPLES DAS IMAGENS
+// ==========================================
 
-document.addEventListener("contextmenu", event => {
+document.addEventListener("contextmenu", (event) => {
 
     if (event.target.tagName === "IMG") {
-
         event.preventDefault();
-
     }
 
 });
 
 
-document.addEventListener("dragstart", event => {
+// ==========================================
+// INICIALIZAÇÃO
+// ==========================================
 
-    if (event.target.tagName === "IMG") {
-
-        event.preventDefault();
-
-    }
-
-});
+createGallery();
+updateWeeklyFact();
+updateCountdown();
+updateFinalReveal();
 
 
-/*
-==================================================
-ATUALIZAÇÃO
-==================================================
-*/
+// Atualiza o relógio
 
-function update() {
-
-    createGallery();
-
-    updateWeeklyFact();
+setInterval(() => {
 
     updateCountdown();
+    updateFinalReveal();
 
-    updateFinalSection();
-
-}
-
-
-update();
-
-
-setInterval(update, 1000);
+}, 1000);
