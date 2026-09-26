@@ -201,7 +201,7 @@ function createGallery() {
                     </span>
 
                     <h3>
-                        Ainda não...
+                        Aguenta aí kkkkk
                     </h3>
 
                 </div>
