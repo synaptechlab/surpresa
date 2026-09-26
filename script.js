@@ -8,7 +8,7 @@ const weeks = [
         date: "2026-09-27T00:00:00-03:00",
         image: "imagens/foto-01.png",
         phrase: "E então? Algum palpite? kkkkk",
-        fact: "Eu gosto bastante de música e provavelmente consigo passar horas ouvindo uma playlist."
+        fact: "Uma coisa que você provavelmente vai perceber sobre mim: eu gosto bastante de música kkkkk"
     },
 
     {
@@ -16,7 +16,7 @@ const weeks = [
         date: "2026-10-04T00:00:00-03:00",
         image: "imagens/foto-02.png",
         phrase: "Ainda está difícil descobrir? 👀",
-        fact: "Tecnologia é uma das coisas que mais despertam minha curiosidade."
+        fact: "Eu gosto muito de aprender coisas novas, principalmente quando posso descobrir sozinho como elas funcionam."
     },
 
     {
@@ -24,7 +24,7 @@ const weeks = [
         date: "2026-10-11T00:00:00-03:00",
         image: "imagens/foto-03.png",
         phrase: "Talvez agora tenha ficado um pouquinho mais fácil...",
-        fact: "Eu gosto de aprender coisas novas, principalmente quando posso colocar a mão na massa."
+        fact: "Uma coisa meio minha é que, quando alguma coisa dá problema, eu gosto de tentar descobrir o que aconteceu antes de simplesmente deixar pra lá quase paranoico dependendo da situação, gosto de compreender"
     },
 
     {
@@ -32,7 +32,7 @@ const weeks = [
         date: "2026-10-18T00:00:00-03:00",
         image: "imagens/foto-04.png",
         phrase: "Está começando a fazer sentido? kkkkk",
-        fact: "Às vezes eu começo uma coisa simples e, quando percebo, já estou tentando melhorar todos os detalhes."
+        fact: "Eu gosto de tirar e editar fotos. Às vezes fico horas editando fotos kkkkk"
     },
 
     {
@@ -40,14 +40,14 @@ const weeks = [
         date: "2026-10-25T00:00:00-03:00",
         image: "imagens/foto-05.png",
         phrase: "Agora dá pra saber o que é kkkkk",
-        fact: "Eu gosto bastante de coisas criativas, principalmente quando posso transformar uma ideia em alguma coisa de verdade."
+        fact: "Muitas coisas que eu sei fazer hoje eu aprendi simplesmente procurando ou fuçando até conseguir"
     },
 
     {
         number: 6,
         date: "2026-11-01T00:00:00-03:00",
         image: "imagens/foto-06.png",
-        phrase: "Já dá pra perceber bastante coisa agora 👀",
+        phrase: "Acho que já ficou impossível não ter uma ideia 👀",
         fact: "Eu tenho uma tendência meio inconveniente de querer entender como as coisas funcionam."
     },
 
@@ -63,7 +63,7 @@ const weeks = [
         number: 8,
         date: "2026-11-15T00:00:00-03:00",
         image: "imagens/foto-08.png",
-        phrase: "Acho que já ficou impossível não ter uma ideia 👀",
+        phrase: "Pelo menos finge que ainda não descobriu kkkkkk",
         fact: "Eu gosto quando as coisas têm significado, mesmo quando parecem simples por fora."
     },
 
@@ -79,7 +79,7 @@ const weeks = [
         number: 10,
         date: "2026-11-29T00:00:00-03:00",
         image: "imagens/foto-10.png",
-        phrase: "Você já deve ter descoberto o segredo 😅",
+        phrase: "Última antes do GRANDE dia!",
         fact: "Essa surpresa começou como uma ideia e acabou ficando muito maior do que eu imaginava."
     },
 
@@ -87,7 +87,7 @@ const weeks = [
         number: 11,
         date: "2026-12-06T00:00:00-03:00",
         image: "imagens/foto-11.png",
-        phrase: "Última antes do grande dia.",
+        phrase: "",
         fact: "Se você chegou até aqui, já descobriu bastante coisa. Mas ainda falta uma última parte."
     }
 ];
