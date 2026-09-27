@@ -20,6 +20,7 @@
   "homepage": "https://github.com/synaptechlab/surpresa#readme",
   "dependencies": {
     "@upstash/redis": "^1.39.0",
+    "redis": "^6.2.1",
     "web-push": "^3.6.7"
   }
 }
