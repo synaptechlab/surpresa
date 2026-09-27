@@ -1,5 +1,5 @@
-import webpush from "web-push";
-import { Redis } from "@upstash/redis";
+const webpush = require("web-push");
+const { Redis } = require("@upstash/redis");
 
 const redis = Redis.fromEnv();
 
@@ -45,7 +45,10 @@ export default async function handler(req, res) {
             } catch (error) {
                 console.error("Erro ao enviar:", error);
 
-                if (error.statusCode === 404 || error.statusCode === 410) {
+                if (
+                    error.statusCode === 404 ||
+                    error.statusCode === 410
+                ) {
                     await redis.srem(
                         "push_subscriptions",
                         typeof subscription === "string"
@@ -73,3 +76,5 @@ export default async function handler(req, res) {
         });
     }
 }
+
+module.exports = handler;
