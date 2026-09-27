@@ -1,61 +1,37 @@
-const { createClient } = require("redis");
+const webpush = require("web-push");
 
-async function handler(req, res) {
-    let redis;
-
+export default async function handler(req, res) {
     try {
-        console.log("1. Iniciando teste");
+        console.log("1. Testando VAPID...");
 
-        console.log(
-            "2. REDIS_URL existe:",
-            !!process.env.REDIS_URL
+        console.log("VAPID_SUBJECT existe:", !!process.env.VAPID_SUBJECT);
+        console.log("VAPID_PUBLIC_KEY existe:", !!process.env.VAPID_PUBLIC_KEY);
+        console.log("VAPID_PRIVATE_KEY existe:", !!process.env.VAPID_PRIVATE_KEY);
+
+        webpush.setVapidDetails(
+            process.env.VAPID_SUBJECT,
+            process.env.VAPID_PUBLIC_KEY,
+            process.env.VAPID_PRIVATE_KEY
         );
 
-        redis = createClient({
-            url: process.env.REDIS_URL
-        });
-
-        redis.on("error", (error) => {
-            console.error("Redis error:", error);
-        });
-
-        console.log("3. Conectando ao Redis...");
-
-        await redis.connect();
-
-        console.log("4. Redis conectado!");
-
-        const subscriptions = await redis.sMembers(
-            "push_subscriptions"
-        );
-
-        console.log(
-            "5. Inscrições encontradas:",
-            subscriptions.length
-        );
-
-        await redis.quit();
+        console.log("2. VAPID configurado!");
 
         return res.status(200).json({
             success: true,
-            redis: true,
-            subscriptions: subscriptions.length
+            vapid: {
+                subject: !!process.env.VAPID_SUBJECT,
+                publicKey: !!process.env.VAPID_PUBLIC_KEY,
+                privateKey: !!process.env.VAPID_PRIVATE_KEY
+            }
         });
 
     } catch (error) {
-        console.error("ERRO COMPLETO:", error);
-
-        if (redis?.isOpen) {
-            await redis.quit();
-        }
+        console.error("ERRO VAPID:", error);
 
         return res.status(500).json({
             success: false,
             error: error.message,
-            name: error.name,
-            stack: error.stack
+            name: error.name
         });
     }
 }
-
-module.exports = handler;
