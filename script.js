@@ -6,7 +6,7 @@ const weeks = [
     {
         number: 1,
         date: "2026-09-27T00:00:00-03:00",
-        image: "imagens/100%.png",
+        image: "imagens/100.png",
         phrase: "E então? Algum palpite? kkkkk",
         fact: "Uma coisa que você provavelmente vai perceber sobre mim: eu gosto bastante de música kkkkk",
         lockedPhrase: "Ainda tem tempo..."
@@ -15,7 +15,7 @@ const weeks = [
     {
         number: 2,
         date: "2026-10-04T00:00:00-03:00",
-        image: "imagens/97%.png",
+        image: "imagens/97.png",
         phrase: "Ainda está difícil descobrir? 👀",
         fact: "Eu gosto muito de aprender coisas novas, principalmente quando posso descobrir sozinho como elas funcionam",
         lockedPhrase: "Ainda não..."
@@ -24,7 +24,7 @@ const weeks = [
     {
         number: 3,
         date: "2026-10-11T00:00:00-03:00",
-        image: "imagens/95%.png",
+        image: "imagens/95.png",
         phrase: "Talvez agora tenha ficado um pouquinho mais fácil...",
         fact: "Uma coisa meio minha é que, quando alguma coisa dá problema, eu gosto de tentar descobrir o que aconteceu antes de simplesmente deixar pra lá quase paranoico dependendo da situação, gosto de compreender",
         lockedPhrase: "Passem logo semanas 😭"
@@ -33,7 +33,7 @@ const weeks = [
     {
         number: 4,
         date: "2026-10-18T00:00:00-03:00",
-        image: "imagens/93%.png",
+        image: "imagens/93.png",
         phrase: "Está começando a fazer sentido? kkkkk",
         fact: "Eu gosto de tirar e editar fotos, geralmente da natureza (às vezes fico horas editando fotos kkkkk)",
         lockedPhrase: "Ainda tem 7 semanas..."
@@ -42,7 +42,7 @@ const weeks = [
     {
         number: 5,
         date: "2026-10-25T00:00:00-03:00",
-        image: "imagens/87%.png",
+        image: "imagens/87.png",
         phrase: "Agora dá pra saber o que é kkkkk",
         fact: "Muitas coisas que eu sei fazer hoje eu aprendi simplesmente procurando ou fuçando até conseguir",
         lockedPhrase: "Ficou interessante"
@@ -51,7 +51,7 @@ const weeks = [
     {
         number: 6,
         date: "2026-11-01T00:00:00-03:00",
-        image: "imagens/78%.png",
+        image: "imagens/78.png",
         phrase: "Acho que já ficou impossível não ter uma ideia 👀",
         fact: "Eu gosto de criar coisas do zero, mesmo quando no começo eu ainda não faço ideia de como fazer",
         lockedPhrase: "A ansiedade deve estar sufocante"
@@ -60,7 +60,7 @@ const weeks = [
     {
         number: 7,
         date: "2026-11-08T00:00:00-03:00",
-        image: "imagens/67%.png",
+        image: "imagens/67.png",
         phrase: "Estamos chegando perto...",
         fact: "Eu gosto quando consigo aprender alguma coisa que antes parecia complicada",
         lockedPhrase: "4 semanas"
@@ -69,7 +69,7 @@ const weeks = [
     {
         number: 8,
         date: "2026-11-15T00:00:00-03:00",
-        image: "imagens/55%.png",
+        image: "imagens/55.png",
         phrase: "Pelo menos finge que ainda não descobriu kkkkkk",
         fact: "Eu rio de tudo kkkkk, quando estou nervoso, feliz, às vezes até em péssimos momentos até mesmo por mensagens kkkk deu pra perceber eu acho, espero que isso não seja incômodo kkkkk",
         lockedPhrase: "Quase lá"
@@ -78,7 +78,7 @@ const weeks = [
     {
         number: 9,
         date: "2026-11-22T00:00:00-03:00",
-        image: "imagens/42%.png",
+        image: "imagens/42.png",
         phrase: "Agora falta pouco...",
         fact: "Além do curso de inglês, eu já participei de um projeto de iniciação científica e fui medalhista de olimpiadas do estado de São Paulo 3x (não é muita coisa), pode não ser muita coisa, mas são conquistas que fico bem feliz de ter feito parte e gostaria de compartilhar kkkkk",
         lockedPhrase: "Tá perto!"
@@ -87,7 +87,7 @@ const weeks = [
     {
         number: 10,
         date: "2026-11-29T00:00:00-03:00",
-        image: "imagens/28%.png",
+        image: "imagens/28.png",
         phrase: "Agora com certeza deu pra perceber 😊",
         fact: "Essa surpresa começou como uma ideia e acabou ficando muito maior do que eu imaginava kkkkkk",
         lockedPhrase: "Só mais 2 semana!"
@@ -96,7 +96,7 @@ const weeks = [
     {
         number: 11,
         date: "2026-12-06T00:00:00-03:00",
-        image: "imagens/12%.png",
+        image: "imagens/12.png",
         phrase: "Última antes do GRANDE dia!",
         fact: "O fato de hoje é: devo estar mais ansioso que você pra esse presente chegar kkkkk",
         lockedPhrase: "Última semana!!!!"
@@ -105,7 +105,7 @@ const weeks = [
     {
     number: 12,
     date: "2026-12-13T00:00:00-03:00",
-    image: "imagens/0%.png",
+    image: "imagens/0.png",
     phrase: "Chegou o grande dia! ❤️",
     fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
     lockedPhrase: "Chegou o grande dia!"
