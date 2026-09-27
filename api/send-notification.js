@@ -1,88 +1,49 @@
-const webpush = require("web-push");
 const { createClient } = require("redis");
-
-webpush.setVapidDetails(
-    process.env.VAPID_SUBJECT,
-    process.env.VAPID_PUBLIC_KEY,
-    process.env.VAPID_PRIVATE_KEY
-);
 
 async function handler(req, res) {
     let redis;
 
     try {
+        console.log("1. Iniciando teste");
+
+        console.log(
+            "2. REDIS_URL existe:",
+            !!process.env.REDIS_URL
+        );
+
         redis = createClient({
             url: process.env.REDIS_URL
         });
 
         redis.on("error", (error) => {
-            console.error("Erro no Redis:", error);
+            console.error("Redis error:", error);
         });
 
+        console.log("3. Conectando ao Redis...");
+
         await redis.connect();
+
+        console.log("4. Redis conectado!");
 
         const subscriptions = await redis.sMembers(
             "push_subscriptions"
         );
 
-        if (!subscriptions || subscriptions.length === 0) {
-            await redis.quit();
-
-            return res.status(200).json({
-                success: false,
-                message: "Nenhuma inscrição encontrada."
-            });
-        }
-
-        const payload = JSON.stringify({
-            title: "Tem novidade 👀",
-            body: "Tem uma nova parte da surpresa esperando por você!"
-        });
-
-        let sent = 0;
-        let removed = 0;
-
-        for (const subscription of subscriptions) {
-            try {
-                const parsedSubscription =
-                    typeof subscription === "string"
-                        ? JSON.parse(subscription)
-                        : subscription;
-
-                await webpush.sendNotification(
-                    parsedSubscription,
-                    payload
-                );
-
-                sent++;
-
-            } catch (error) {
-                console.error("Erro ao enviar:", error);
-
-                if (
-                    error.statusCode === 404 ||
-                    error.statusCode === 410
-                ) {
-                    await redis.sRem(
-                        "push_subscriptions",
-                        subscription
-                    );
-
-                    removed++;
-                }
-            }
-        }
+        console.log(
+            "5. Inscrições encontradas:",
+            subscriptions.length
+        );
 
         await redis.quit();
 
         return res.status(200).json({
             success: true,
-            sent,
-            removed
+            redis: true,
+            subscriptions: subscriptions.length
         });
 
     } catch (error) {
-        console.error("Erro geral:", error);
+        console.error("ERRO COMPLETO:", error);
 
         if (redis?.isOpen) {
             await redis.quit();
@@ -90,7 +51,9 @@ async function handler(req, res) {
 
         return res.status(500).json({
             success: false,
-            error: error.message
+            error: error.message,
+            name: error.name,
+            stack: error.stack
         });
     }
 }
