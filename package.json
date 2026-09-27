@@ -1,1 +1,25 @@
-
+{
+  "name": "surpresa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synaptechlab/surpresa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/synaptechlab/surpresa/issues"
+  },
+  "homepage": "https://github.com/synaptechlab/surpresa#readme",
+  "dependencies": {
+    "@upstash/redis": "^1.39.0",
+    "web-push": "^3.6.7"
+  }
+}
