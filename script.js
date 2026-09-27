@@ -470,3 +470,52 @@ setInterval(() => {
     updateFinalReveal();
 
 }, 1000);
+async function ativarNotificacoes() {
+    try {
+        if (!("Notification" in window)) {
+            console.log("Este navegador não suporta notificações.");
+            return;
+        }
+
+        if (!("serviceWorker" in navigator)) {
+            console.log("Este navegador não suporta Service Worker.");
+            return;
+        }
+
+        const permission = await Notification.requestPermission();
+
+        if (permission !== "granted") {
+            console.log("Permissão para notificações negada.");
+            return;
+        }
+
+        const registration = await navigator.serviceWorker.register(
+            "/service-worker.js"
+        );
+
+        const response = await fetch("/api/vapid-public-key");
+
+        if (!response.ok) {
+            throw new Error("Não foi possível obter a chave VAPID.");
+        }
+
+        const { publicKey } = await response.json();
+
+        const subscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: publicKey
+        });
+
+        await fetch("/api/subscribe", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(subscription)
+        });
+
+        console.log("Notificações ativadas com sucesso!");
+    } catch (error) {
+        console.error("Erro ao ativar notificações:", error);
+    }
+}
