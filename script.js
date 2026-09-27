@@ -98,9 +98,18 @@ const weeks = [
         date: "2026-12-06T00:00:00-03:00",
         image: "imagens/12%.png",
         phrase: "Última antes do GRANDE dia!",
-        fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
+        fact: "O fato de hoje é: devo estar mais ansioso que você pra esse presente chegar kkkkk",
         lockedPhrase: "Última semana!!!!"
-    }
+    },
+
+    {
+    number: 12,
+    date: "2026-12-13T00:00:00-03:00",
+    image: "imagens/0%.png",
+    phrase: "Chegou o grande dia! ❤️",
+    fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
+    lockedPhrase: "Chegou o grande dia!"
+}
 ];
 
 
@@ -423,7 +432,7 @@ revealButton.addEventListener("click", () => {
             Finalmente. 💚
         </strong>
         <br><br>
-        Espero que essa pequena surpresa tenha valido a espera.
+        Espero que essa pequena surpresa tenha valido a espera!
     `;
 
     revealButton.style.display = "none";
