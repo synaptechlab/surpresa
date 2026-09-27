@@ -519,3 +519,15 @@ async function ativarNotificacoes() {
         console.error("Erro ao ativar notificações:", error);
     }
 }
+const notificationButton =
+    document.getElementById("notificationButton");
+
+notificationButton.addEventListener("click", async () => {
+    await ativarNotificacoes();
+
+    if (Notification.permission === "granted") {
+        notificationButton.textContent =
+            "🔔 Notificações ativadas!";
+        notificationButton.disabled = true;
+    }
+});
