@@ -71,9 +71,10 @@ async function handler(req, res) {
         console.error(error);
 
         return res.status(500).json({
-            success: false,
-            error: error.message
-        });
+    success: false,
+    error: error.message,
+    stack: error.stack
+});
     }
 }
 
