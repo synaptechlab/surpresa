@@ -9,7 +9,7 @@ webpush.setVapidDetails(
     process.env.VAPID_PRIVATE_KEY
 );
 
-export default async function handler(req, res) {
+async function handler(req, res) {
     try {
         const subscriptions = await redis.smembers("push_subscriptions");
 
