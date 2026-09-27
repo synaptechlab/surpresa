@@ -1,4 +1,17 @@
+self.addEventListener("install", event => {
+    self.skipWaiting();
+});
+
+self.addEventListener("activate", event => {
+    event.waitUntil(
+        clients.claim()
+    );
+});
+
+
 self.addEventListener("push", event => {
+
+    console.log("PUSH RECEBIDO PELO SERVICE WORKER");
 
     let data = {
         title: "Tem novidade 👀",
@@ -9,28 +22,27 @@ self.addEventListener("push", event => {
         try {
             data = event.data.json();
         } catch (error) {
-            console.error("Erro ao ler payload:", error);
+            console.error("Erro ao interpretar o push:", error);
         }
     }
 
-    const title = data.title || "Tem novidade 👀";
-
-    const options = {
-        body: data.body || "Tem uma nova parte da surpresa esperando por você!",
-        icon: "/favicon.png",
-        badge: "/favicon.png",
-        tag: "surpresa-semanal",
-        renotify: true,
-        requireInteraction: false,
-        data: {
-            url: "/"
-        }
-    };
-
     event.waitUntil(
         self.registration.showNotification(
-            title,
-            options
+            data.title || "Tem novidade 👀",
+            {
+                body:
+                    data.body ||
+                    "Tem uma nova parte da surpresa esperando por você!",
+
+                icon: "/favicon.png",
+                badge: "/favicon.png",
+
+                tag: "surpresa-semanal",
+
+                data: {
+                    url: "/"
+                }
+            }
         )
     );
 
@@ -55,10 +67,7 @@ self.addEventListener("notificationclick", event => {
 
             }
 
-            if (clients.openWindow) {
-                return clients.openWindow("/");
-            }
-
+            return clients.openWindow("/");
         })
     );
 
