@@ -103,13 +103,13 @@ const weeks = [
     },
 
     {
-    number: 12,
-    date: "2026-12-13T00:00:00-03:00",
-    image: "imagens/0.png",
-    phrase: "Chegou o grande dia! ❤️",
-    fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
-    lockedPhrase: "Chegou o grande dia!"
-}
+        number: 12,
+        date: "2026-12-13T00:00:00-03:00",
+        image: "imagens/0.png",
+        phrase: "Chegou o grande dia! 😁",
+        fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
+        lockedPhrase: "Chegou o grande dia!"
+    }
 ];
 
 
@@ -470,64 +470,175 @@ setInterval(() => {
     updateFinalReveal();
 
 }, 1000);
+
+
+// ==========================================
+// CONVERSÃO DA CHAVE VAPID
+// ==========================================
+
+function urlBase64ToUint8Array(base64String) {
+
+    const padding = "=".repeat(
+        (4 - base64String.length % 4) % 4
+    );
+
+    const base64 = (base64String + padding)
+        .replace(/-/g, "+")
+        .replace(/_/g, "/");
+
+    const rawData = window.atob(base64);
+
+    return Uint8Array.from(
+        [...rawData].map(char => char.charCodeAt(0))
+    );
+}
+
+
+// ==========================================
+// ATIVAÇÃO DAS NOTIFICAÇÕES
+// ==========================================
+
 async function ativarNotificacoes() {
+
     try {
+
         if (!("Notification" in window)) {
-            console.log("Este navegador não suporta notificações.");
+
+            console.log(
+                "Este navegador não suporta notificações."
+            );
+
             return;
         }
+
 
         if (!("serviceWorker" in navigator)) {
-            console.log("Este navegador não suporta Service Worker.");
+
+            console.log(
+                "Este navegador não suporta Service Worker."
+            );
+
             return;
         }
 
-        const permission = await Notification.requestPermission();
+
+        const permission =
+            await Notification.requestPermission();
+
 
         if (permission !== "granted") {
-            console.log("Permissão para notificações negada.");
+
+            console.log(
+                "Permissão para notificações negada."
+            );
+
             return;
         }
 
-        const registration = await navigator.serviceWorker.register(
-            "/service-worker.js"
-        );
 
-        const response = await fetch("/api/vapid-public-key");
+        const registration =
+            await navigator.serviceWorker.register(
+                "/service-worker.js"
+            );
+
+
+        const response =
+            await fetch("/api/vapid-public-key");
+
 
         if (!response.ok) {
-            throw new Error("Não foi possível obter a chave VAPID.");
+
+            throw new Error(
+                "Não foi possível obter a chave VAPID."
+            );
         }
 
-        const { publicKey } = await response.json();
 
-        const subscription = await registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: publicKey
-        });
+        const { publicKey } =
+            await response.json();
 
-        await fetch("/api/subscribe", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(subscription)
-        });
 
-        console.log("Notificações ativadas com sucesso!");
+        // Converte a chave VAPID para o formato
+        // esperado pelo PushManager.
+
+        const applicationServerKey =
+            urlBase64ToUint8Array(publicKey);
+
+
+        const subscription =
+            await registration.pushManager.subscribe({
+
+                userVisibleOnly: true,
+
+                applicationServerKey
+
+            });
+
+
+        const subscribeResponse =
+            await fetch("/api/subscribe", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(subscription)
+
+            });
+
+
+        if (!subscribeResponse.ok) {
+
+            throw new Error(
+                "Não foi possível salvar a inscrição."
+            );
+        }
+
+
+        console.log(
+            "Notificações ativadas com sucesso!"
+        );
+
     } catch (error) {
-        console.error("Erro ao ativar notificações:", error);
+
+        console.error(
+            "Erro ao ativar notificações:",
+            error
+        );
+
     }
 }
+
+
+// ==========================================
+// BOTÃO DE NOTIFICAÇÕES
+// ==========================================
+
 const notificationButton =
     document.getElementById("notificationButton");
 
-notificationButton.addEventListener("click", async () => {
-    await ativarNotificacoes();
 
-    if (Notification.permission === "granted") {
-        notificationButton.textContent =
-            "🔔 Notificações ativadas!";
-        notificationButton.disabled = true;
-    }
-});
+if (notificationButton) {
+
+    notificationButton.addEventListener(
+        "click",
+        async () => {
+
+            await ativarNotificacoes();
+
+            if (
+                Notification.permission === "granted"
+            ) {
+
+                notificationButton.textContent =
+                    "🔔 Notificações ativadas!";
+
+                notificationButton.disabled = true;
+            }
+
+        }
+    );
+
+}
