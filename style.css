@@ -1,3 +1,4 @@
+```css
 /* ==========================================
    VARIÁVEIS
    ========================================== */
@@ -528,6 +529,108 @@ button {
 
 
 /* ==========================================
+   BOTÃO DE NOTIFICAÇÕES
+   ========================================== */
+
+.notification-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    padding: 13px 22px;
+
+    border: 1px solid rgba(105, 117, 45, 0.45);
+
+    border-radius: 50px;
+
+    background:
+        rgba(75, 83, 32, 0.18);
+
+    color: var(--cream);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.01em;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.notification-button:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        rgba(75, 83, 32, 0.32);
+
+    border-color:
+        rgba(105, 117, 45, 0.75);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+.notification-button:active {
+
+    transform: translateY(0);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.18);
+}
+
+
+.notification-button:focus-visible {
+
+    outline: 2px solid var(--military-light);
+
+    outline-offset: 4px;
+}
+
+
+.notification-button:disabled {
+
+    opacity: 0.55;
+
+    cursor: default;
+
+    transform: none;
+
+    background:
+        rgba(75, 83, 32, 0.12);
+
+    border-color:
+        rgba(105, 117, 45, 0.25);
+
+    box-shadow: none;
+}
+
+
+/* ==========================================
    REVELAÇÃO FINAL
    ========================================== */
 
@@ -708,6 +811,16 @@ footer {
     }
 
 
+    .notification-button {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        padding: 14px 20px;
+    }
+
+
     .final-card {
 
         padding: 60px 25px;
@@ -746,3 +859,4 @@ footer {
         font-size: 5rem;
     }
 }
+```
