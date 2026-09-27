@@ -1,7 +1,5 @@
 const webpush = require("web-push");
-const { Redis } = require("@upstash/redis");
-
-const redis = Redis.fromEnv();
+const { createClient } = require("redis");
 
 webpush.setVapidDetails(
     process.env.VAPID_SUBJECT,
@@ -10,10 +8,26 @@ webpush.setVapidDetails(
 );
 
 async function handler(req, res) {
+    let redis;
+
     try {
-        const subscriptions = await redis.smembers("push_subscriptions");
+        redis = createClient({
+            url: process.env.REDIS_URL
+        });
+
+        redis.on("error", (error) => {
+            console.error("Erro no Redis:", error);
+        });
+
+        await redis.connect();
+
+        const subscriptions = await redis.sMembers(
+            "push_subscriptions"
+        );
 
         if (!subscriptions || subscriptions.length === 0) {
+            await redis.quit();
+
             return res.status(200).json({
                 success: false,
                 message: "Nenhuma inscrição encontrada."
@@ -49,17 +63,17 @@ async function handler(req, res) {
                     error.statusCode === 404 ||
                     error.statusCode === 410
                 ) {
-                    await redis.srem(
+                    await redis.sRem(
                         "push_subscriptions",
-                        typeof subscription === "string"
-                            ? subscription
-                            : JSON.stringify(subscription)
+                        subscription
                     );
 
                     removed++;
                 }
             }
         }
+
+        await redis.quit();
 
         return res.status(200).json({
             success: true,
@@ -68,13 +82,16 @@ async function handler(req, res) {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error("Erro geral:", error);
+
+        if (redis?.isOpen) {
+            await redis.quit();
+        }
 
         return res.status(500).json({
-    success: false,
-    error: error.message,
-    stack: error.stack
-});
+            success: false,
+            error: error.message
+        });
     }
 }
 
