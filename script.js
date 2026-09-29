@@ -102,7 +102,6 @@ const weeks = [
         lockedPhrase: "Última semana!!!!"
     },
 
-    
 
 // ==========================================
 // DATA DA REVELAÇÃO FINAL
