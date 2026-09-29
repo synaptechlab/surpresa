@@ -102,16 +102,7 @@ const weeks = [
         lockedPhrase: "Última semana!!!!"
     },
 
-    {
-        number: 12,
-        date: "2026-12-13T00:00:00-03:00",
-        image: "imagens/12.png",
-        phrase: "Chegou o grande dia! 😁",
-        fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
-        lockedPhrase: "Chegou o grande dia! Dica para o momento certo: a caixa com doces não é pesada desse jeito kkkk"
-    }
-];
-
+    
 
 // ==========================================
 // DATA DA REVELAÇÃO FINAL
