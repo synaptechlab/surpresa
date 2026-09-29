@@ -57,7 +57,11 @@ export default async function handler(req, res) {
         const today = getBrazilDate();
 
         console.log("Data atual:", today);
+// ==================================
+// MODO DE TESTE
+// ==================================
 
+const testMode = req.query?.test === "true";
 
         // ==================================
         // VERIFICA SE HOJE TEM REVELAÇÃO
