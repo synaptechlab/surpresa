@@ -45,7 +45,7 @@ const weeks = [
         image: "imagens/5.png",
         phrase: "Dá pra ter um palpite melhor kkkkk",
         fact: "Muitas coisas que eu sei fazer hoje eu aprendi simplesmente procurando ou fuçando até conseguir",
-        lockedPhrase: "Ficou interessante"
+        lockedPhrase: "Quase meio caminho andado!"
     },
 
     {
@@ -54,7 +54,7 @@ const weeks = [
         image: "imagens/6.png",
         phrase: "Acho que já ficou impossível não ter uma ideia 👀",
         fact: "Eu gosto de criar coisas do zero, mesmo quando no começo eu ainda não faço ideia de como fazer",
-        lockedPhrase: "A ansiedade deve estar sufocante"
+        lockedPhrase: "A ansiedade deve estar sufocando kkkk"
     },
 
     {
@@ -63,7 +63,7 @@ const weeks = [
         image: "imagens/7.png",
         phrase: "Estamos chegando perto...",
         fact: "Eu gosto quando consigo aprender alguma coisa que antes parecia complicada",
-        lockedPhrase: "4 semanas"
+        lockedPhrase: "4 semanas!"
     },
 
     {
@@ -72,7 +72,7 @@ const weeks = [
         image: "imagens/8.png",
         phrase: "Pelo menos finge que ainda não descobriu kkkkkk",
         fact: "Eu rio de tudo kkkkk, quando estou nervoso, feliz, às vezes até em péssimos momentos até mesmo por mensagens kkkk deu pra perceber eu acho, espero que isso não seja incômodo kkkkk",
-        lockedPhrase: "Quase lá"
+        lockedPhrase: "Falta pouco!"
     },
 
     {
@@ -90,7 +90,7 @@ const weeks = [
         image: "imagens/10.png",
         phrase: "Com certeza dá pra saber kkkkk 😊",
         fact: "Essa surpresa começou como uma ideia e acabou ficando muito maior do que eu imaginava kkkkkk",
-        lockedPhrase: "Só mais 2 semana!"
+        lockedPhrase: "Só mais 2 semanas!"
     },
 
     {
