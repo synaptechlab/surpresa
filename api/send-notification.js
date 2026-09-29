@@ -67,7 +67,7 @@ const testMode = req.query?.test === "true";
         // VERIFICA SE HOJE TEM REVELAÇÃO
         // ==================================
 
-        if (!revelationDates.includes(today)) {
+       if (!testMode && !revelationDates.includes(today)){
 
             return res.status(200).json({
                 success: true,
