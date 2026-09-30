@@ -778,7 +778,9 @@ footer {
     cursor: default;
     transform: none;
 }
-/* TELA DE SENHA */
+/* ==========================================
+   TELA DE SENHA
+   ========================================== */
 
 .password-screen {
     position: fixed;
@@ -789,75 +791,245 @@ footer {
     align-items: center;
     justify-content: center;
 
-    background: var(--background);
     padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255, 255, 255, 0.06),
+            transparent 45%
+        ),
+        var(--background);
 }
 
 .password-box {
-    width: min(100%, 400px);
+    position: relative;
+
+    width: min(100%, 390px);
+    padding: 42px 34px 36px;
+
     text-align: center;
 
-    padding: 40px 30px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.025)
+        ),
+        var(--card);
 
-    background: var(--card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 28px;
+
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.025);
+
+    overflow: hidden;
+
+    animation: passwordBoxAppear 0.6s ease both;
+}
+
+/* Brilho discreto no topo do cartão */
+.password-box::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+}
+
+/* Pequeno detalhe decorativo */
+.password-box::after {
+    content: "✦";
+
+    position: absolute;
+    top: 18px;
+    right: 22px;
+
+    color: rgba(255, 255, 255, 0.22);
+    font-size: 0.9rem;
+}
+
+.password-box .eyebrow {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--accent);
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
 .password-box h2 {
-    margin: 12px 0;
+    margin: 0 0 10px;
+
+    color: var(--cream);
+
+    font-size: 1.75rem;
+    line-height: 1.2;
 }
 
 .password-box p {
-    margin-bottom: 20px;
+    margin: 0 auto 24px;
+
+    max-width: 290px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
 }
 
 #passwordInput {
     width: 100%;
     box-sizing: border-box;
 
-    padding: 14px 16px;
+    padding: 15px 17px;
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
 
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.18);
+
     color: var(--cream);
 
     font-family: "DM Sans", sans-serif;
     font-size: 1rem;
 
     outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+#passwordInput::placeholder {
+    color: rgba(255, 255, 255, 0.35);
 }
 
 #passwordInput:focus {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: color-mix(
+        in srgb,
+        var(--accent) 70%,
+        white
+    );
+
+    background: rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.035),
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    transform: translateY(-1px);
 }
 
 #passwordButton {
     width: 100%;
 
     margin-top: 12px;
-    padding: 14px;
+    padding: 15px;
 
-    border: none;
-    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
 
     background: var(--accent);
     color: white;
 
     font-family: "DM Sans", sans-serif;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
 
     cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
 }
 
+#passwordButton:hover {
+    filter: brightness(1.08);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+#passwordButton:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+#passwordButton:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+/* Mensagem de erro / status */
 #passwordMessage {
     min-height: 20px;
-    margin-top: 12px;
-    margin-bottom: 0;
 
-    font-size: 0.85rem;
+    margin: 13px 0 0;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+/* Entrada suave */
+@keyframes passwordBoxAppear {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 480px) {
+    .password-screen {
+        padding: 16px;
+    }
+
+    .password-box {
+        padding: 36px 24px 30px;
+        border-radius: 24px;
+    }
+
+    .password-box h2 {
+        font-size: 1.55rem;
+    }
 }
 /* BLOQUEIO DO SITE */
 
