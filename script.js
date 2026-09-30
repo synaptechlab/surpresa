@@ -856,29 +856,206 @@ const passwordMessage =
 const passwordScreen =
     document.getElementById("passwordScreen");
 
-document.body.classList.add("locked");
+
+// ==========================================
+// IDENTIFICADOR DO DISPOSITIVO
+// ==========================================
+
+let deviceId =
+    localStorage.getItem("surpresaDeviceId");
+
+if (!deviceId) {
+    deviceId = crypto.randomUUID();
+
+    localStorage.setItem(
+        "surpresaDeviceId",
+        deviceId
+    );
+}
+
+
+// ==========================================
+// FUNÇÃO PARA LIBERAR O SITE
+// ==========================================
+
+function unlockSite() {
+    passwordScreen.style.display = "none";
+
+    document.body.classList.remove("locked");
+}
+
+
+// ==========================================
+// FUNÇÃO PARA VERIFICAR AUTORIZAÇÃO
+// ==========================================
+
+async function checkDeviceAccess() {
+
+    document.body.classList.add("locked");
+
+    const savedToken =
+        localStorage.getItem("surpresaAccessToken");
+
+    // Se não existe token, precisa pedir a senha
+    if (!savedToken) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "/api/device-access",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    deviceId,
+                    token: savedToken
+                })
+            }
+        );
+
+        const data =
+            await response.json();
+
+        if (
+            response.ok &&
+            data.success &&
+            data.authorized
+        ) {
+            unlockSite();
+            return;
+        }
+
+        // Token inválido ou expirado
+        localStorage.removeItem(
+            "surpresaAccessToken"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao verificar acesso:",
+            error
+        );
+
+        passwordMessage.textContent =
+            "Não foi possível verificar o acesso.";
+    }
+}
+
+
+// ==========================================
+// PRIMEIRO ACESSO COM SENHA
+// ==========================================
 
 passwordButton.addEventListener(
     "click",
-    () => {
+    async () => {
+
         const senha =
-            passwordInput.value;
+            passwordInput.value.trim();
 
-        if (senha === "080826") {
-            passwordScreen.style.display =
-                "none";
-
-            document.body.classList.remove(
-                "locked"
-            );
-        } else {
+        if (!senha) {
             passwordMessage.textContent =
+                "Digite a senha.";
+
+            return;
+        }
+
+        passwordButton.disabled = true;
+
+        passwordMessage.textContent =
+            "Verificando...";
+
+        try {
+
+            const response = await fetch(
+                "/api/device-access",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        password: senha,
+                        deviceId
+                    })
+                }
+            );
+
+            const data =
+                await response.json();
+
+            if (
+                response.ok &&
+                data.success &&
+                data.authorized &&
+                data.token
+            ) {
+
+                localStorage.setItem(
+                    "surpresaAccessToken",
+                    data.token
+                );
+
+                passwordMessage.textContent =
+                    "";
+
+                unlockSite();
+
+                return;
+            }
+
+            passwordMessage.textContent =
+                data.message ||
                 "Senha incorreta!";
 
-            passwordInput.value =
-                "";
-
+            passwordInput.value = "";
             passwordInput.focus();
+
+        } catch (error) {
+
+            console.error(
+                "Erro ao autenticar:",
+                error
+            );
+
+            passwordMessage.textContent =
+                "Não foi possível verificar a senha.";
+
+        } finally {
+
+            passwordButton.disabled = false;
         }
     }
 );
+
+
+// ==========================================
+// PERMITIR ENTER NO CAMPO DE SENHA
+// ==========================================
+
+passwordInput.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Enter") {
+            passwordButton.click();
+        }
+
+    }
+);
+
+
+// ==========================================
+// VERIFICAR ACESSO AO ABRIR O SITE
+// ==========================================
+
+checkDeviceAccess();
