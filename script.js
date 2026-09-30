@@ -118,26 +118,46 @@ const weeks = [
 // DATA DA REVELAÇÃO FINAL
 // ==========================================
 
-const finalRevealDate = new Date("2026-12-13T00:00:00-03:00");
+const finalRevealDate =
+    new Date("2026-12-13T00:00:00-03:00");
 
 
 // ==========================================
 // ELEMENTOS DA PÁGINA
 // ==========================================
 
-const gallery = document.getElementById("gallery");
+const gallery =
+    document.getElementById("gallery");
 
-const daysElement = document.getElementById("days");
-const hoursElement = document.getElementById("hours");
-const minutesElement = document.getElementById("minutes");
-const secondsElement = document.getElementById("seconds");
+const daysElement =
+    document.getElementById("days");
 
-const weeklyTitle = document.getElementById("weeklyTitle");
-const weeklyFact = document.getElementById("weeklyFact");
-const weeklyNumber = document.getElementById("weeklyNumber");
+const hoursElement =
+    document.getElementById("hours");
 
-const finalText = document.getElementById("finalText");
-const revealButton = document.getElementById("revealButton");
+const minutesElement =
+    document.getElementById("minutes");
+
+const secondsElement =
+    document.getElementById("seconds");
+
+const weeklyTitle =
+    document.getElementById("weeklyTitle");
+
+const weeklyFact =
+    document.getElementById("weeklyFact");
+
+const weeklyNumber =
+    document.getElementById("weeklyNumber");
+
+const finalText =
+    document.getElementById("finalText");
+
+const revealButton =
+    document.getElementById("revealButton");
+
+const aboutSection =
+    document.querySelector(".about-section");
 
 
 // ==========================================
@@ -152,14 +172,8 @@ function getCurrentWeek() {
 
     weeks.forEach((week) => {
 
-        // A semana 12 é a revelação final,
-        // então não conta como uma semana normal.
-
-        if (week.number === 12) {
-            return;
-        }
-
-        const weekDate = new Date(week.date);
+        const weekDate =
+            new Date(week.date);
 
         if (now >= weekDate) {
             currentWeek = week.number;
@@ -177,12 +191,16 @@ function getCurrentWeek() {
 
 function formatDate(dateString) {
 
-    const date = new Date(dateString);
+    const date =
+        new Date(dateString);
 
-    return date.toLocaleDateString("pt-BR", {
-        day: "2-digit",
-        month: "2-digit"
-    });
+    return date.toLocaleDateString(
+        "pt-BR",
+        {
+            day: "2-digit",
+            month: "2-digit"
+        }
+    );
 }
 
 
@@ -192,26 +210,30 @@ function formatDate(dateString) {
 
 function createGallery() {
 
-    const currentWeek = getCurrentWeek();
+    const currentWeek =
+        getCurrentWeek();
 
     gallery.innerHTML = "";
 
     weeks.forEach((week) => {
 
-        // A semana 12 não aparece na galeria.
-        // Ela será mostrada somente na revelação final.
+        // A semana 12 é a revelação final.
+        // Ela não aparece como card na galeria.
 
         if (week.number === 12) {
             return;
         }
 
-        const isUnlocked = week.number <= currentWeek;
+        const isUnlocked =
+            week.number <= currentWeek;
 
-        const card = document.createElement("article");
+        const card =
+            document.createElement("article");
 
-        card.className = isUnlocked
-            ? "gallery-card unlocked"
-            : "gallery-card locked";
+        card.className =
+            isUnlocked
+                ? "gallery-card unlocked"
+                : "gallery-card locked";
 
 
         // ==================================
@@ -295,13 +317,38 @@ function createGallery() {
 
 function updateWeeklyFact() {
 
-    const currentWeek = getCurrentWeek();
+    const currentWeek =
+        getCurrentWeek();
+
+
+    // No dia da revelação final,
+    // não mostra a curiosidade da semana 12.
+
+    if (currentWeek >= 12) {
+
+        if (aboutSection) {
+            aboutSection.style.display = "none";
+        }
+
+        return;
+    }
+
+
+    // Garante que a seção esteja visível
+    // antes da semana 12.
+
+    if (aboutSection) {
+        aboutSection.style.display = "";
+    }
+
 
     if (currentWeek === 0) {
 
-        weeklyNumber.textContent = "EM BREVE";
+        weeklyNumber.textContent =
+            "EM BREVE";
 
-        weeklyTitle.textContent = "Uma coisa sobre mim";
+        weeklyTitle.textContent =
+            "Uma coisa sobre mim";
 
         weeklyFact.textContent =
             "A cada semana, você vai descobrir um pouquinho mais sobre mim.";
@@ -309,7 +356,10 @@ function updateWeeklyFact() {
         return;
     }
 
-    const currentData = weeks[currentWeek - 1];
+
+    const currentData =
+        weeks[currentWeek - 1];
+
 
     weeklyNumber.textContent =
         `SEMANA ${String(currentWeek).padStart(2, "0")}`;
@@ -328,7 +378,8 @@ function updateWeeklyFact() {
 
 function updateCountdown() {
 
-    const now = new Date();
+    const now =
+        new Date();
 
     let nextDate = null;
 
@@ -337,11 +388,13 @@ function updateCountdown() {
 
     for (const week of weeks) {
 
-        const weekDate = new Date(week.date);
+        const weekDate =
+            new Date(week.date);
 
         if (now < weekDate) {
 
-            nextDate = weekDate;
+            nextDate =
+                weekDate;
 
             break;
         }
@@ -352,19 +405,29 @@ function updateCountdown() {
     // conta até a revelação final.
 
     if (!nextDate) {
-        nextDate = finalRevealDate;
+
+        nextDate =
+            finalRevealDate;
     }
 
 
-    const difference = nextDate - now;
+    const difference =
+        nextDate - now;
 
 
     if (difference <= 0) {
 
-        daysElement.textContent = "00";
-        hoursElement.textContent = "00";
-        minutesElement.textContent = "00";
-        secondsElement.textContent = "00";
+        daysElement.textContent =
+            "00";
+
+        hoursElement.textContent =
+            "00";
+
+        minutesElement.textContent =
+            "00";
+
+        secondsElement.textContent =
+            "00";
 
         createGallery();
         updateWeeklyFact();
@@ -373,21 +436,28 @@ function updateCountdown() {
     }
 
 
-    const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-    );
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
 
-    const hours = Math.floor(
-        (difference / (1000 * 60 * 60)) % 24
-    );
+    const hours =
+        Math.floor(
+            (difference /
+                (1000 * 60 * 60)) % 24
+        );
 
-    const minutes = Math.floor(
-        (difference / (1000 * 60)) % 60
-    );
+    const minutes =
+        Math.floor(
+            (difference /
+                (1000 * 60)) % 60
+        );
 
-    const seconds = Math.floor(
-        (difference / 1000) % 60
-    );
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
 
 
     daysElement.textContent =
@@ -410,11 +480,14 @@ function updateCountdown() {
 
 function updateFinalReveal() {
 
-    const now = new Date();
+    const now =
+        new Date();
+
 
     if (now >= finalRevealDate) {
 
-        revealButton.disabled = false;
+        revealButton.disabled =
+            false;
 
         revealButton.textContent =
             "Revelar surpresa";
@@ -424,7 +497,8 @@ function updateFinalReveal() {
 
     } else {
 
-        revealButton.disabled = true;
+        revealButton.disabled =
+            true;
 
         revealButton.textContent =
             "Aguarde...";
@@ -439,93 +513,114 @@ function updateFinalReveal() {
 // BOTÃO DA REVELAÇÃO
 // ==========================================
 
-revealButton.addEventListener("click", () => {
+revealButton.addEventListener(
+    "click",
+    () => {
 
-    const now = new Date();
+        const now =
+            new Date();
 
-    if (now < finalRevealDate) {
-        return;
+        if (now < finalRevealDate) {
+            return;
+        }
+
+
+        const finalData =
+            weeks.find(
+                (week) =>
+                    week.number === 12
+            );
+
+
+        let finalImage =
+            document.getElementById(
+                "finalImage"
+            );
+
+
+        if (!finalImage && finalData) {
+
+            finalImage =
+                document.createElement("img");
+
+            finalImage.id =
+                "finalImage";
+
+            finalImage.src =
+                finalData.image;
+
+            finalImage.alt =
+                "Revelação final";
+
+            finalImage.draggable =
+                false;
+
+            finalImage.style.display =
+                "block";
+
+            finalImage.style.width =
+                "100%";
+
+            finalImage.style.maxWidth =
+                "900px";
+
+            finalImage.style.height =
+                "auto";
+
+            finalImage.style.margin =
+                "30px auto";
+
+            finalImage.style.borderRadius =
+                "16px";
+
+            finalImage.style.userSelect =
+                "none";
+
+            finalImage.style.webkitUserSelect =
+                "none";
+
+            finalImage.style.boxShadow =
+                "0 15px 40px rgba(0, 0, 0, 0.25)";
+
+
+            finalText.parentNode.insertBefore(
+                finalImage,
+                finalText
+            );
+        }
+
+
+        finalText.innerHTML = `
+            <strong>
+                Finalmente. 💚
+            </strong>
+
+            <br><br>
+
+            Espero que essa pequena surpresa tenha valido a espera!
+        `;
+
+
+        revealButton.style.display =
+            "none";
     }
-
-
-    // Busca a imagem da semana 12,
-    // que agora é exclusivamente a revelação final.
-
-    const finalData =
-        weeks.find((week) => week.number === 12);
-
-
-    // Cria a imagem final apenas quando
-    // a pessoa clicar no botão.
-
-    let finalImage =
-        document.getElementById("finalImage");
-
-
-    if (!finalImage && finalData) {
-
-        finalImage = document.createElement("img");
-
-        finalImage.id = "finalImage";
-
-        finalImage.src = finalData.image;
-
-        finalImage.alt = "Revelação final";
-
-        finalImage.draggable = false;
-
-        finalImage.style.display = "block";
-
-        finalImage.style.width = "100%";
-
-        finalImage.style.maxWidth = "900px";
-
-        finalImage.style.height = "auto";
-
-        finalImage.style.margin = "30px auto";
-
-        finalImage.style.borderRadius = "16px";
-
-        finalImage.style.userSelect = "none";
-
-        finalImage.style.webkitUserSelect = "none";
-
-        finalImage.style.boxShadow =
-            "0 15px 40px rgba(0, 0, 0, 0.25)";
-
-
-        // Coloca a imagem antes do texto final.
-
-        finalText.parentNode.insertBefore(
-            finalImage,
-            finalText
-        );
-    }
-
-
-    finalText.innerHTML = `
-        <strong>
-            Finalmente. 💚
-        </strong>
-        <br><br>
-        Espero que essa pequena surpresa tenha valido a espera!
-    `;
-
-    revealButton.style.display = "none";
-});
+);
 
 
 // ==========================================
 // PROTEÇÃO SIMPLES DAS IMAGENS
 // ==========================================
 
-document.addEventListener("contextmenu", (event) => {
+document.addEventListener(
+    "contextmenu",
+    (event) => {
 
-    if (event.target.tagName === "IMG") {
-        event.preventDefault();
+        if (event.target.tagName === "IMG") {
+            event.preventDefault();
+        }
+
     }
-
-});
+);
 
 
 // ==========================================
@@ -533,189 +628,60 @@ document.addEventListener("contextmenu", (event) => {
 // ==========================================
 
 createGallery();
+
 updateWeeklyFact();
+
 updateCountdown();
+
 updateFinalReveal();
 
 
-// Atualiza o relógio
+// ==========================================
+// ATUALIZA O RELÓGIO
+// ==========================================
 
-setInterval(() => {
+setInterval(
+    () => {
 
-    updateCountdown();
-    updateFinalReveal();
+        updateCountdown();
 
-}, 1000);
+        updateFinalReveal();
+
+    },
+    1000
+);
 
 
 // ==========================================
 // CONVERSÃO DA CHAVE VAPID
 // ==========================================
 
-function urlBase64ToUint8Array(base64String) {
+function urlBase64ToUint8Array(
+    base64String
+) {
 
-    const padding = "=".repeat(
-        (4 - base64String.length % 4) % 4
-    );
+    const padding =
+        "=".repeat(
+            (4 - base64String.length % 4) % 4
+        );
 
-    const base64 = (base64String + padding)
-        .replace(/-/g, "+")
-        .replace(/_/g, "/");
+    const base64 =
+        (base64String + padding)
+            .replace(/-/g, "+")
+            .replace(/_/g, "/");
 
-    const rawData = window.atob(base64);
+    const rawData =
+        window.atob(base64);
 
     return Uint8Array.from(
-        [...rawData].map(char => char.charCodeAt(0))
+        [...rawData].map(
+            char =>
+                char.charCodeAt(0)
+        )
     );
 }
 
 
 // ==========================================
-// ATIVAÇÃO DAS NOTIFICAÇÕES
-// ==========================================
-
-async function ativarNotificacoes() {
-
-    try {
-
-        if (!("Notification" in window)) {
-
-            console.log(
-                "Este navegador não suporta notificações."
-            );
-
-            return;
-        }
-
-
-        if (!("serviceWorker" in navigator)) {
-
-            console.log(
-                "Este navegador não suporta Service Worker."
-            );
-
-            return;
-        }
-
-
-        const permission =
-            await Notification.requestPermission();
-
-
-        if (permission !== "granted") {
-
-            console.log(
-                "Permissão para notificações negada."
-            );
-
-            return;
-        }
-
-
-        const registration =
-            await navigator.serviceWorker.register(
-                "/service-worker.js"
-            );
-
-
-        const response =
-            await fetch("/api/vapid-public-key");
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Não foi possível obter a chave VAPID."
-            );
-        }
-
-
-        const { publicKey } =
-            await response.json();
-
-
-        // Converte a chave VAPID para o formato
-        // esperado pelo PushManager.
-
-        const applicationServerKey =
-            urlBase64ToUint8Array(publicKey);
-
-
-        const subscription =
-            await registration.pushManager.subscribe({
-
-                userVisibleOnly: true,
-
-                applicationServerKey
-
-            });
-
-
-        const subscribeResponse =
-            await fetch("/api/subscribe", {
-
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify(subscription)
-
-            });
-
-
-        if (!subscribeResponse.ok) {
-
-            throw new Error(
-                "Não foi possível salvar a inscrição."
-            );
-        }
-
-
-        console.log(
-            "Notificações ativadas com sucesso!"
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Erro ao ativar notificações:",
-            error
-        );
-
-    }
-}
-
-
-// ==========================================
-// BOTÃO DE NOTIFICAÇÕES
-// ==========================================
-
-const notificationButton =
-    document.getElementById("notificationButton");
-
-
-if (notificationButton) {
-
-    notificationButton.addEventListener(
-        "click",
-        async () => {
-
-            await ativarNotificacoes();
-
-            if (
-                Notification.permission === "granted"
-            ) {
-
-                notificationButton.textContent =
-                    "🔔 Notificações ativadas!";
-
-                notificationButton.disabled = true;
-            }
-
-        }
-    );
-
-}
+//
 ```
