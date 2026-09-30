@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Acompanhe sua supresa! </title>
+    <title>Acompanhe sua supresa!</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="icon" href="./favicon.png?v=2" type="image/png">
     <link rel="stylesheet" href="style.css">
@@ -16,13 +20,55 @@
 
 <body>
 
+    <!-- TELA DE SENHA -->
+
+    <div id="passwordScreen" class="password-screen">
+
+        <div class="password-box">
+
+            <span class="eyebrow">
+                UMA SURPRESA PRA VOCÊ
+            </span>
+
+            <h2>
+                Antes de entrar...
+            </h2>
+
+            <p>
+                Tem uma pequena senha esperando por você 👀
+            </p>
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Digite a senha"
+                maxlength="6"
+            >
+
+            <button id="passwordButton">
+                Entrar
+            </button>
+
+            <p id="passwordMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SITE -->
+
     <main>
 
         <!-- HERO -->
+
         <section class="hero">
+
             <div class="hero-content">
 
-                <span class="eyebrow">UMA PEQUENA SURPRESA</span>
+                <span class="eyebrow">
+                    UMA PEQUENA SURPRESA
+                </span>
 
                 <h1>
                     Algumas coisas<br>
@@ -36,9 +82,13 @@
                 </p>
 
                 <div class="countdown-container">
-                    <span class="countdown-label">PRÓXIMA REVELAÇÃO</span>
+
+                    <span class="countdown-label">
+                        PRÓXIMA REVELAÇÃO
+                    </span>
 
                     <div id="countdown" class="countdown">
+
                         <div>
                             <strong id="days">00</strong>
                             <span>dias</span>
@@ -58,19 +108,25 @@
                             <strong id="seconds">00</strong>
                             <span>segundos</span>
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
+
         </section>
-        <div id="passwordScreen" class="password-screen">
 
 
         <!-- GALERIA -->
+
         <section class="gallery-section">
 
             <div class="section-heading">
-                <span class="eyebrow">A SURPRESA</span>
+
+                <span class="eyebrow">
+                    A SURPRESA
+                </span>
 
                 <h2>
                     Uma parte de cada vez.
@@ -80,6 +136,7 @@
                     A cada semana, uma nova imagem será desbloqueada.
                     As próximas ainda estão esperando a hora certa.
                 </p>
+
             </div>
 
             <div id="gallery" class="gallery"></div>
@@ -88,11 +145,14 @@
 
 
         <!-- SOBRE MIM -->
+
         <section class="about-section">
 
             <div class="about-card">
 
-                <span class="eyebrow">ENQUANTO ISSO...</span>
+                <span class="eyebrow">
+                    ENQUANTO ISSO...
+                </span>
 
                 <h2 id="weeklyTitle">
                     Uma coisa sobre mim
@@ -107,9 +167,12 @@
                     SEMANA 01
                 </span>
 
-                <button id="notificationButton" class="notification-button">
-    🔔 Ativar notificações
-</button>
+                <button
+                    id="notificationButton"
+                    class="notification-button"
+                >
+                    🔔 Ativar notificações
+                </button>
 
             </div>
 
@@ -117,11 +180,14 @@
 
 
         <!-- REVELAÇÃO FINAL -->
+
         <section class="final-section">
 
             <div class="final-card">
 
-                <span class="eyebrow">13 DE DEZEMBRO</span>
+                <span class="eyebrow">
+                    13 DE DEZEMBRO
+                </span>
 
                 <h2>
                     Chegou a hora.
@@ -132,7 +198,11 @@
                     o momento certo.
                 </p>
 
-                <button id="revealButton" class="reveal-button" disabled>
+                <button
+                    id="revealButton"
+                    class="reveal-button"
+                    disabled
+                >
                     Aguenta aí kkkk
                 </button>
 
@@ -144,33 +214,14 @@
 
 
     <footer>
+
         Feito com carinho, um pouco de planejamento e provavelmente
         mais tempo do que deveria kkkkkk 💚
+
     </footer>
 
 
     <script src="script.js"></script>
 
 </body>
-    <div class="password-box">
-        <span class="eyebrow">UMA SURPRESA PRA VOCÊ</span>
-
-        <h2>Antes de entrar...</h2>
-
-        <p>Tem uma pequena senha esperando por você 👀</p>
-
-        <input
-            type="password"
-            id="passwordInput"
-            placeholder="Digite a senha"
-            maxlength="6"
-        >
-
-        <button id="passwordButton">
-            Entrar
-        </button>
-
-        <p id="passwordMessage"></p>
-    </div>
-</div>
 </html>
