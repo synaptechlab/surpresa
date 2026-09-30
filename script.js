@@ -856,9 +856,6 @@ const passwordMessage =
 const passwordScreen =
     document.getElementById("passwordScreen");
 
-const siteContent =
-    document.getElementById("siteContent");
-
 
 passwordButton.addEventListener(
     "click",
@@ -872,9 +869,6 @@ passwordButton.addEventListener(
 
             passwordScreen.style.display =
                 "none";
-
-            siteContent.style.display =
-                "block";
 
         } else {
 
