@@ -1,3 +1,4 @@
+```javascript
 // ==========================================
 // CONFIGURAÇÃO DAS SEMANAS
 // ==========================================
@@ -102,6 +103,16 @@ const weeks = [
         lockedPhrase: "Última semana!!!!"
     },
 
+    {
+        number: 12,
+        date: "2026-12-13T00:00:00-03:00",
+        image: "imagens/12.png",
+        phrase: "Chegou o grande dia! 😁",
+        fact: "Esse presente eu pensei em te dar no momento que vi você dizer que gostava da cor verde mas não tinha muita roupa que poderia vestir então quis te dar esse presente, espero que possa ser especial pra você!",
+        lockedPhrase: "Chegou o grande dia! Dica para o momento certo: a caixa com doces não é pesada desse jeito kkkk"
+    }
+];
+
 
 // ==========================================
 // DATA DA REVELAÇÃO FINAL
@@ -134,16 +145,26 @@ const revealButton = document.getElementById("revealButton");
 // ==========================================
 
 function getCurrentWeek() {
+
     const now = new Date();
 
     let currentWeek = 0;
 
     weeks.forEach((week) => {
+
+        // A semana 12 é a revelação final,
+        // então não conta como uma semana normal.
+
+        if (week.number === 12) {
+            return;
+        }
+
         const weekDate = new Date(week.date);
 
         if (now >= weekDate) {
             currentWeek = week.number;
         }
+
     });
 
     return currentWeek;
@@ -155,6 +176,7 @@ function getCurrentWeek() {
 // ==========================================
 
 function formatDate(dateString) {
+
     const date = new Date(dateString);
 
     return date.toLocaleDateString("pt-BR", {
@@ -175,6 +197,13 @@ function createGallery() {
     gallery.innerHTML = "";
 
     weeks.forEach((week) => {
+
+        // A semana 12 não aparece na galeria.
+        // Ela será mostrada somente na revelação final.
+
+        if (week.number === 12) {
+            return;
+        }
 
         const isUnlocked = week.number <= currentWeek;
 
@@ -305,6 +334,7 @@ function updateCountdown() {
 
 
     // Procura a próxima semana ainda bloqueada
+
     for (const week of weeks) {
 
         const weekDate = new Date(week.date);
@@ -416,6 +446,62 @@ revealButton.addEventListener("click", () => {
     if (now < finalRevealDate) {
         return;
     }
+
+
+    // Busca a imagem da semana 12,
+    // que agora é exclusivamente a revelação final.
+
+    const finalData =
+        weeks.find((week) => week.number === 12);
+
+
+    // Cria a imagem final apenas quando
+    // a pessoa clicar no botão.
+
+    let finalImage =
+        document.getElementById("finalImage");
+
+
+    if (!finalImage && finalData) {
+
+        finalImage = document.createElement("img");
+
+        finalImage.id = "finalImage";
+
+        finalImage.src = finalData.image;
+
+        finalImage.alt = "Revelação final";
+
+        finalImage.draggable = false;
+
+        finalImage.style.display = "block";
+
+        finalImage.style.width = "100%";
+
+        finalImage.style.maxWidth = "900px";
+
+        finalImage.style.height = "auto";
+
+        finalImage.style.margin = "30px auto";
+
+        finalImage.style.borderRadius = "16px";
+
+        finalImage.style.userSelect = "none";
+
+        finalImage.style.webkitUserSelect = "none";
+
+        finalImage.style.boxShadow =
+            "0 15px 40px rgba(0, 0, 0, 0.25)";
+
+
+        // Coloca a imagem antes do texto final.
+
+        finalText.parentNode.insertBefore(
+            finalImage,
+            finalText
+        );
+    }
+
 
     finalText.innerHTML = `
         <strong>
@@ -632,3 +718,4 @@ if (notificationButton) {
     );
 
 }
+```
