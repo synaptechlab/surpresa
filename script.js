@@ -839,21 +839,54 @@ if (notificationButton) {
 
         }
     );
- const passwordInput = document.getElementById("passwordInput");
-const passwordButton = document.getElementById("passwordButton");
-const passwordMessage = document.getElementById("passwordMessage");
-const passwordScreen = document.getElementById("passwordScreen");
-
-passwordButton.addEventListener("click", () => {
-    const senha = passwordInput.value;
-
-    if (senha === "080826") {
-        passwordScreen.style.display = "none";
-    } else {
-        passwordMessage.textContent = "Senha incorreta!";
-        passwordInput.value = "";
-        passwordInput.focus();
-    }
-});
-
 }
+// ==========================================
+// SENHA DE ACESSO
+// ==========================================
+
+const passwordInput =
+    document.getElementById("passwordInput");
+
+const passwordButton =
+    document.getElementById("passwordButton");
+
+const passwordMessage =
+    document.getElementById("passwordMessage");
+
+const passwordScreen =
+    document.getElementById("passwordScreen");
+
+const siteContent =
+    document.getElementById("siteContent");
+
+
+passwordButton.addEventListener(
+    "click",
+    () => {
+
+        const senha =
+            passwordInput.value;
+
+
+        if (senha === "080826") {
+
+            passwordScreen.style.display =
+                "none";
+
+            siteContent.style.display =
+                "block";
+
+        } else {
+
+            passwordMessage.textContent =
+                "Senha incorreta!";
+
+            passwordInput.value =
+                "";
+
+            passwordInput.focus();
+
+        }
+
+    }
+);
