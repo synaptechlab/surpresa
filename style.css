@@ -859,3 +859,9 @@ footer {
 
     font-size: 0.85rem;
 }
+/* BLOQUEIO DO SITE */
+
+body.locked main,
+body.locked footer {
+    display: none;
+}
