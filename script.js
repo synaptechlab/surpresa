@@ -492,7 +492,7 @@ function updateFinalReveal() {
             "Revelar surpresa";
 
         finalText.textContent =
-            "Depois de tantas semanas, finalmente chegou o momento.";
+            "Depois de tantas semanas, finalmente chegou o momento!";
 
     } else {
 
@@ -500,10 +500,10 @@ function updateFinalReveal() {
             true;
 
         revealButton.textContent =
-            "Aguarde...";
+            "Aguenta aí!";
 
         finalText.textContent =
-            "A última parte dessa surpresa ainda está esperando o momento certo.";
+            "A última parte dessa surpresa ainda está esperando o momento certo";
     }
 }
 
@@ -591,7 +591,7 @@ revealButton.addEventListener(
 
         finalText.innerHTML = `
             <strong>
-                Finalmente. 💚
+                Finalmente!
             </strong>
 
             <br><br>
