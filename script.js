@@ -856,22 +856,22 @@ const passwordMessage =
 const passwordScreen =
     document.getElementById("passwordScreen");
 
+document.body.classList.add("locked");
 
 passwordButton.addEventListener(
     "click",
     () => {
-
         const senha =
             passwordInput.value;
 
-
         if (senha === "080826") {
-
             passwordScreen.style.display =
                 "none";
 
+            document.body.classList.remove(
+                "locked"
+            );
         } else {
-
             passwordMessage.textContent =
                 "Senha incorreta!";
 
@@ -879,8 +879,6 @@ passwordButton.addEventListener(
                 "";
 
             passwordInput.focus();
-
         }
-
     }
 );
