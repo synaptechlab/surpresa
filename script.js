@@ -839,5 +839,22 @@ if (notificationButton) {
 
         }
     );
+    const passwordInput = document.getElementById("passwordInput");
+const passwordButton = document.getElementById("passwordButton");
+const passwordMessage = document.getElementById("passwordMessage");
+
+passwordButton.addEventListener("click", () => {
+    const senha = passwordInput.value;
+
+    if (senha === "080826") {
+        passwordMessage.textContent = "Senha correta!";
+
+        // O que acontece quando acertar
+        console.log("Senha correta");
+        
+    } else {
+        passwordMessage.textContent = "Senha incorreta!";
+    }
+});
 
 }
