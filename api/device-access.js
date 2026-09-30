@@ -1,3 +1,10 @@
+import { Redis } from "@upstash/redis";
+
+const redis = new Redis({
+    url: process.env.REDIS_URL,
+    token: process.env.REDIS_TOKEN,
+});
+
 export default async function handler(req, res) {
     if (req.method !== "POST") {
         return res.status(405).json({
@@ -7,7 +14,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { password, deviceId } = req.body || {};
+        const { password, deviceId, token } = req.body || {};
 
         if (!deviceId) {
             return res.status(400).json({
@@ -16,16 +23,61 @@ export default async function handler(req, res) {
             });
         }
 
+        // ==========================================
+        // VERIFICAR TOKEN EXISTENTE
+        // ==========================================
+
+        if (token) {
+            const savedDeviceId =
+                await redis.get(`device-token:${token}`);
+
+            if (
+                savedDeviceId &&
+                savedDeviceId === deviceId
+            ) {
+                return res.status(200).json({
+                    success: true,
+                    authorized: true
+                });
+            }
+
+            return res.status(401).json({
+                success: false,
+                authorized: false,
+                message: "Token inválido."
+            });
+        }
+
+        // ==========================================
+        // PRIMEIRO ACESSO: VERIFICAR SENHA
+        // ==========================================
+
         if (password !== process.env.DEVICE_PASSWORD) {
             return res.status(401).json({
                 success: false,
+                authorized: false,
                 message: "Senha incorreta."
             });
         }
 
+        // ==========================================
+        // GERAR TOKEN DO DISPOSITIVO
+        // ==========================================
+
+        const accessToken =
+            crypto.randomUUID() +
+            "-" +
+            crypto.randomUUID();
+
+        await redis.set(
+            `device-token:${accessToken}`,
+            deviceId
+        );
+
         return res.status(200).json({
             success: true,
-            deviceId
+            authorized: true,
+            token: accessToken
         });
 
     } catch (error) {
@@ -33,6 +85,7 @@ export default async function handler(req, res) {
 
         return res.status(500).json({
             success: false,
+            authorized: false,
             message: "Erro interno."
         });
     }
