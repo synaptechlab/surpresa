@@ -1,8 +1,11 @@
-import { Redis } from "@upstash/redis";
+import { createClient } from "redis";
 
-const redis = new Redis({
-    url: process.env.REDIS_URL,
-    token: process.env.REDIS_TOKEN,
+const redis = createClient({
+    url: process.env.REDIS_URL
+});
+
+redis.on("error", (error) => {
+    console.error("Erro no Redis:", error);
 });
 
 export default async function handler(req, res) {
@@ -14,7 +17,15 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { password, deviceId, token } = req.body || {};
+        if (!redis.isOpen) {
+            await redis.connect();
+        }
+
+        const {
+            password,
+            deviceId,
+            token
+        } = req.body || {};
 
         if (!deviceId) {
             return res.status(400).json({
@@ -61,7 +72,7 @@ export default async function handler(req, res) {
         }
 
         // ==========================================
-        // GERAR TOKEN DO DISPOSITIVO
+        // GERAR TOKEN
         // ==========================================
 
         const accessToken =
@@ -69,10 +80,18 @@ export default async function handler(req, res) {
             "-" +
             crypto.randomUUID();
 
+        // ==========================================
+        // SALVAR TOKEN NO REDIS
+        // ==========================================
+
         await redis.set(
             `device-token:${accessToken}`,
             deviceId
         );
+
+        // ==========================================
+        // AUTORIZAR DISPOSITIVO
+        // ==========================================
 
         return res.status(200).json({
             success: true,
